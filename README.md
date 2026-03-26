@@ -139,26 +139,7 @@ If you're having pairing issues between the halves or with a host device, flash 
 
 ---
 
-## Layer 4 — NUMPAD
-
-> No trigger key assigned yet — activate via ZMK Studio.
-
-```
-┌──────┬──────┬──────┬──────┬──────┬──────┐       ┌──────┬──────┬──────┬──────┬──────┬──────┐
-│  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │  7   │  8   │  9   │  ▼   │  ▼   │
-├──────┼──────┼──────┼──────┼──────┼──────┤       ├──────┼──────┼──────┼──────┼──────┼──────┤
-│  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │  4   │  5   │  6   │  ▼   │  ▼   │
-├──────┼──────┼──────┼──────┼──────┼──────┤       ├──────┼──────┼──────┼──────┼──────┼──────┤
-│  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │  1   │  2   │  3   │  .   │  ▼   │
-└──────┴──────┴──────┴──────┴──────┴──────┘       └──────┴──────┴──────┴──────┴──────┴──────┘
-                         ┌──────┬──────┬──────┐ ┌──────┬──────┬──────┐
-                         │  ▼   │  ▼   │  ▼   │ │  ▼   │  .   │  0   │
-                         └──────┴──────┴──────┘ └──────┴──────┴──────┘
-```
-
----
-
-## Layer 5 — MOUSE (hold ESC)
+## Layer 4 — MOUSE (hold ESC)
 
 ```
 ┌──────┬──────┬──────┬──────┬──────┬──────┐       ┌──────┬──────┬───────┬────────┬──────┬──────┐
@@ -193,7 +174,6 @@ If you're having pairing issues between the halves or with a host device, flash 
 | How | Layer |
 |-----|-------|
 | Hold **G** | NAV (layer 3) |
-| Hold **ESC** | MOUSE (layer 5) |
+| Hold **ESC** | MOUSE (layer 4) |
 | Hold left **NUM** thumb | NUMBER (layer 1) |
 | Hold right **SYM** thumb | SYMBOL (layer 2) |
-| ZMK Studio | NUMPAD (layer 4) |
