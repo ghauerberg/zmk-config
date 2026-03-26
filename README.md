@@ -1,5 +1,38 @@
 # Piantor Pro BT — Keymap Reference
 
+## Building & Flashing
+
+### GitHub Actions (recommended)
+
+Every push to this repo triggers a GitHub Actions build automatically. To get your firmware:
+
+1. Push your changes to GitHub
+2. Go to **Actions** → select the latest **Build ZMK firmware** run
+3. Once green, download the `firmware` artifact (a `.zip`)
+4. Unzip — you'll find these files for the Piantor:
+   - `piantor_pro_bt_left-nice_view-zmk.uf2` — left half
+   - `piantor_pro_bt_right-nice_view-zmk.uf2` — right half
+   - `piantor_pro_bt_left-settings_reset-zmk.uf2` — left half settings reset
+   - `piantor_pro_bt_right-settings_reset-zmk.uf2` — right half settings reset
+
+### Flashing a half
+
+Each half is flashed independently via USB:
+
+1. Plug the half into your computer via USB-C
+2. Double-tap the **reset button** on the PCB — the controller will mount as a USB drive called `NICENANO` (or similar)
+3. Drag and drop the `.uf2` file onto the drive
+4. The drive will disappear and the controller will reboot automatically
+5. Repeat for the other half
+
+> Flash the **right half first**, then the left. The left half is the central (USB/BLE host) and will try to pair with the right on first boot.
+
+### Settings reset
+
+If you're having pairing issues between the halves or with a host device, flash the settings reset firmware to both halves (in any order), then re-flash the normal firmware.
+
+---
+
 **Legend:**
 - `tap` / `hold` / `2×` = single tap / hold / double tap
 - `▼` = transparent (passes through to layer below)
