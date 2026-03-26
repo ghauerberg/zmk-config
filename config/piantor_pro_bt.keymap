@@ -41,6 +41,14 @@
             bindings = <&kp>, <&kp>;
         };
 
+        // td_quot: tap=single quote, double-tap=double quote
+        td_quot: tap_dance_quot {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp SQT>, <&kp DQT>;
+        };
+
         // Danish characters via double-tap (macOS Option+key combos).
         // td_a: tap=A (with LGUI hold), double-tap=å (Option+A)
         td_a: tap_dance_a {
@@ -147,17 +155,19 @@
             // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬──────┐
             // │ $ │ 1 │ 2 │ 3 │ 4 │ 5 │   │ 6 │ 7 │ 8 │ 9 │ 0 │ BSPC │
             // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼──────┤
-            // │ ? │ \ │ % │ @ │ : │ - │   │ " │ { │ ( │ ) │ } │  RET │
+            // │ ? │ \ │ % │ @ │ : │ - │   │ + │ { │ ( │ ) │ } │  =   │
             // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼──────┤
-            // │ | │ ! │ # │ + │ & │ _ │   │ ' │ [ │ ] │ ~ │ = │  _   │
+            // │ | │ ! │ # │ _ │ & │ ~ │   │'/"│ [ │ ] │ ` │ \ │      │
             // └───┴───┴───┴───┴───┴───┘   └───┴───┴───┴───┴───┴──────┘
             //           ╭──────┬─────┬──────╮ ╭───────┬───────┬───────╮
             //           │ LCTL │     │LSHFT │ │ LSHFT │   ~   │   `   │
             //           ╰──────┴─────┴──────╯ ╰───────┴───────┴───────╯
+            // Right home row: arithmetic cluster  - + =  with brackets
+            // '/" key: tap=single quote, double-tap=double quote
             bindings = <
                 &kp DLLR     &kp N1       &kp N2       &kp N3       &kp N4       &kp N5        &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
-                &kp QMARK    &kp BSLH     &kp PRCNT    &kp AT       &kp COLON    &kp MINUS     &kp DQT      &kp LBRC     &kp LPAR     &kp RPAR     &kp RBRC     &kp RET
-                &kp PIPE     &kp EXCL     &kp HASH     &kp PLUS     &kp AMPS     &kp UNDER     &kp SQT      &kp LBKT     &kp RBKT     &kp TILDE    &kp EQUAL    &kp UNDER
+                &kp QMARK    &kp BSLH     &kp PRCNT    &kp AT       &kp COLON    &kp MINUS     &kp PLUS     &kp LBRC     &kp LPAR     &kp RPAR     &kp RBRC     &kp EQUAL
+                &kp PIPE     &kp EXCL     &kp HASH     &kp UNDER    &kp AMPS     &kp TILDE     &td_quot     &kp LBKT     &kp RBKT     &kp GRAVE    &kp BSLH     &trans
                                                         &kp LCTRL    &trans       &kp LSHFT     &kp LSHFT    &kp TILDE    &kp GRAVE
             >;
         };
