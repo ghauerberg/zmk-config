@@ -49,6 +49,14 @@
             bindings = <&kp SQT>, <&kp DQT>;
         };
 
+        // td_min: tap=minus, double-tap=underscore
+        td_min: tap_dance_min {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp MINUS>, <&kp UNDER>;
+        };
+
         // Danish characters via double-tap (macOS Option+key combos).
         // td_a: tap=A (with LGUI hold), double-tap=å (Option+A)
         td_a: tap_dance_a {
@@ -155,19 +163,20 @@
             // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬──────┐
             // │ $ │ 1 │ 2 │ 3 │ 4 │ 5 │   │ 6 │ 7 │ 8 │ 9 │ 0 │ BSPC │
             // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼──────┤
-            // │ ? │ \ │ % │ @ │ : │ - │   │ + │ { │ ( │ ) │ } │  =   │
+            // │ ? │ \ │ % │ @ │ : │-/_│   │ + │ { │ ( │ ) │ } │  =   │
             // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼──────┤
-            // │ | │ ! │ # │ _ │ & │ ~ │   │'/"│ [ │ ] │ ` │ \ │      │
+            // │ | │ ! │ # │ & │ ^ │ ~ │   │'/"│ [ │ ] │ ` │ \ │      │
             // └───┴───┴───┴───┴───┴───┘   └───┴───┴───┴───┴───┴──────┘
             //           ╭──────┬─────┬──────╮ ╭───────┬───────┬───────╮
             //           │ LCTL │     │LSHFT │ │ LSHFT │   ~   │   `   │
             //           ╰──────┴─────┴──────╯ ╰───────┴───────┴───────╯
-            // Right home row: arithmetic cluster  - + =  with brackets
+            // Right home row: arithmetic cluster  -/_ + =  with brackets
+            // -/_ key: tap=minus, double-tap=underscore
             // '/" key: tap=single quote, double-tap=double quote
             bindings = <
                 &kp DLLR     &kp N1       &kp N2       &kp N3       &kp N4       &kp N5        &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
-                &kp QMARK    &kp BSLH     &kp PRCNT    &kp AT       &kp COLON    &kp MINUS     &kp PLUS     &kp LBRC     &kp LPAR     &kp RPAR     &kp RBRC     &kp EQUAL
-                &kp PIPE     &kp EXCL     &kp HASH     &kp UNDER    &kp AMPS     &kp TILDE     &td_quot     &kp LBKT     &kp RBKT     &kp GRAVE    &kp BSLH     &trans
+                &kp QMARK    &kp BSLH     &kp PRCNT    &kp AT       &kp COLON    &td_min       &kp PLUS     &kp LBRC     &kp LPAR     &kp RPAR     &kp RBRC     &kp EQUAL
+                &kp PIPE     &kp EXCL     &kp HASH     &kp AMPS     &kp CARET    &kp TILDE     &td_quot     &kp LBKT     &kp RBKT     &kp GRAVE    &kp BSLH     &trans
                                                         &kp LCTRL    &trans       &kp LSHFT     &kp LSHFT    &kp TILDE    &kp GRAVE
             >;
         };
