@@ -83,7 +83,7 @@
     [["KC_TRNS", "KC_TRNS"], ["KC_TRNS", "KC_TRNS"], ["KC_TRNS", "KC_TRNS"], ["KC_TRNS", "KC_TRNS"]]
   ],
   "tap_dance": [
-    {"on_tap": "KC_A",    "on_hold": "KC_LGUI", "on_double_tap": "LALT(KC_A)",    "on_tap_hold": "KC_NO", "tap_interval": 250},
+    {"on_tap": "KC_A",    "on_hold": "LALT(KC_A)",    "on_double_tap": "KC_NO", "on_tap_hold": "KC_NO", "tap_interval": 250},
     {"on_tap": "KC_S",    "on_hold": "KC_LALT", "on_double_tap": "KC_NO",          "on_tap_hold": "KC_NO", "tap_interval": 250},
     {"on_tap": "KC_D",    "on_hold": "KC_LCTL", "on_double_tap": "KC_NO",          "on_tap_hold": "KC_NO", "tap_interval": 250},
     {"on_tap": "KC_F",    "on_hold": "KC_LGUI", "on_double_tap": "KC_NO",          "on_tap_hold": "KC_NO", "tap_interval": 250},
@@ -95,8 +95,8 @@
     {"on_tap": "KC_QUOT", "on_hold": "KC_NO",   "on_double_tap": "LSFT(KC_QUOT)", "on_tap_hold": "KC_NO", "tap_interval": 200},
     {"on_tap": "KC_MINS", "on_hold": "KC_NO",   "on_double_tap": "LSFT(KC_MINS)", "on_tap_hold": "KC_NO", "tap_interval": 200},
     {"on_tap": "KC_SLSH", "on_hold": "KC_NO",   "on_double_tap": "KC_BSLS",       "on_tap_hold": "KC_NO", "tap_interval": 200},
-    {"on_tap": "KC_E",    "on_hold": "KC_NO",   "on_double_tap": "LALT(KC_QUOT)", "on_tap_hold": "KC_NO", "tap_interval": 200},
-    {"on_tap": "KC_O",    "on_hold": "KC_NO",   "on_double_tap": "LALT(KC_O)",    "on_tap_hold": "KC_NO", "tap_interval": 200}
+    {"on_tap": "KC_E",    "on_hold": "LALT(KC_QUOT)", "on_double_tap": "KC_NO", "on_tap_hold": "KC_NO", "tap_interval": 200},
+    {"on_tap": "KC_O",    "on_hold": "LALT(KC_O)",    "on_double_tap": "KC_NO", "on_tap_hold": "KC_NO", "tap_interval": 200}
   ],
   "macros": [
     [{"action":"down","keycodes":["KC_LCTL"]},{"action":"tap","keycodes":["KC_B"]},{"action":"up","keycodes":["KC_LCTL"]},{"action":"tap","keycodes":["KC_LBRC"]}],

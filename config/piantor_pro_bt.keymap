@@ -11,7 +11,6 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/pointing.h>
 
 #define QWERTY 0
@@ -64,28 +63,8 @@
             bindings = <&kp FSLH>, <&kp BSLH>;
         };
 
-        // Danish characters via double-tap (macOS Option+key combos).
-        // td_a: tap=A (with LGUI hold), double-tap=å (Option+A)
-        td_a: tap_dance_a {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&hrm LGUI A>, <&kp LA(A)>;
-        };
-        // td_e: tap=E, double-tap=æ (Option+')
-        td_e: tap_dance_e {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp E>, <&kp LA(SQT)>;
-        };
-        // td_o: tap=O, double-tap=ø (Option+O)
-        td_o: tap_dance_o {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp O>, <&kp LA(O)>;
-        };
+        // Danish characters via hold (macOS Option+key combos).
+        // hrm is reused: hold=Option+X sends å/æ/ø, tap=normal letter.
     };
 
     macros {
@@ -147,19 +126,19 @@
         default_layer {
             display-name = "QWERTY";
             // ┌──────────────┬───┬───┬──────┬───┬────────┐   ┌───┬───┬───┬──────┬───┬──────┐
-            // │     TAB      │ Q │ W │E/æ  │ R │   T    │   │ Y │ U │ I │O/ø  │ P │ BSPC │
+            // │     TAB      │ Q │ W │E(æ) │ R │   T    │   │ Y │ U │ I │O(ø) │ P │ BSPC │
             // ├──────────────┼───┼───┼──────┼───┼────────┤   ├───┼───┼───┼──────┼───┼──────┤
-            // │ESC/MOUSE(hld)│A/å│S/A│D/C  │F/G│ G/NAV  │   │ H │J/G│K/C│L/A  │ ; │  RET │
+            // │ESC/MOUSE(hld)│A(å│S/A│D/C  │F/G│ G/NAV  │   │ H │J/G│K/C│L/A  │ ; │  RET │
             // ├──────────────┼───┼───┼───┼───┼────────┤   ├───┼───┼───┼───┼───┼──────┤
             // │     LGUI     │ Z │ X │ C │ V │   B    │   │ N │ M │ , │ . │ / │ DEL  │
             // └──────────────┴───┴───┴───┴───┴────────┘   └───┴───┴───┴───┴───┴──────┘
             //                       ╭──────┬─────┬──────╮ ╭───────┬─────┬─────╮
             //                       │ LALT │ NUM │LSHFT │ │ SPACE │ SYM │ TAB │
             //                       ╰──────┴─────┴──────╯ ╰───────┴─────┴─────╯
-            // Home row mods: A=LGUI  S=LALT  D=LCTRL  F=LGUI  J=RGUI  K=RCTRL  L=RALT
+            // Hold = modifier/layer/Danish: A(å) E(æ) O(ø)  S=LALT  D=LCTRL  F=LGUI  J=RGUI  K=RCTRL  L=RALT
             bindings = <
-                &kp TAB       &kp Q        &kp W        &td_e        &kp R        &kp T         &kp Y        &kp U        &kp I        &td_o        &kp P        &kp BSPC
-                &lt MOUSE ESC &td_a        &hrm LALT S  &hrm LCTRL D &hrm LGUI F  &lt NAV G     &kp H        &hrm RGUI J  &hrm RCTRL K &hrm RALT L  &kp SEMI     &kp RET
+                &kp TAB       &kp Q        &kp W        &hrm LA(SQT) E &kp R      &kp T         &kp Y        &kp U        &kp I        &hrm LA(O) O &kp P        &kp BSPC
+                &lt MOUSE ESC &hrm LA(A) A &hrm LALT S  &hrm LCTRL D &hrm LGUI F  &lt NAV G     &kp H        &hrm RGUI J  &hrm RCTRL K &hrm RALT L  &kp SEMI     &kp RET
                 &kp LGUI      &kp Z        &kp X        &hrm LG(C) C &hrm LG(V) V &kp B         &kp N        &kp M        &kp COMMA    &kp DOT      &kp FSLH     &kp DEL
                                                          &kp LALT     &mo NUMBER   &kp LSHFT     &kp SPACE    &mo SYMBOL   &kp TAB
             >;
