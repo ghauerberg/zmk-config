@@ -38,8 +38,8 @@ CONFIG_ZMK_RGB_UNDERGLOW_BRT_MAX=20
 CONFIG_ZMK_RGB_UNDERGLOW_HUE_START=200
 CONFIG_ZMK_RGB_UNDERGLOW_SAT_START=98
 
-# Windows Battery Reporting Fix
-CONFIG_BT_GATT_ENFORCE_SUBSCRIPTION=n
+# macOS only — re-enable GATT subscription enforcement (the =n workaround is only needed for Windows)
+CONFIG_BT_GATT_ENFORCE_SUBSCRIPTION=y
 
 # Enable ZMK Studio (alpha)
 CONFIG_ZMK_STUDIO=y
