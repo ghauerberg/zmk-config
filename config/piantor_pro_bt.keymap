@@ -18,10 +18,25 @@
 #define SYMBOL 2
 #define NAV    3
 #define MOUSE  4
+#define BT     5
 
 / {
     chosen {
         zmk,physical-layout = &default_layout;
+    };
+};
+
+/ {
+    combos {
+        compatible = "zmk,combos";
+        // Hold ESC + G together → BT layer (right home row = BT profiles 1-4)
+        // Key positions: ESC=12  G=17
+        combo_bt_layer {
+            timeout-ms = <75>;
+            key-positions = <12 17>;
+            bindings = <&mo BT>;
+            layers = <QWERTY>;
+        };
     };
 };
 
@@ -257,6 +272,29 @@
                 &trans       &trans       &trans       &trans       &trans       &trans        &mmv MOVE_LEFT    &mmv MOVE_DOWN    &mmv MOVE_UP      &mmv MOVE_RIGHT   &trans       &trans
                 &trans       &trans       &trans       &trans       &trans       &trans        &trans            &kp LG(LA(LEFT))  &kp LG(LA(RIGHT)) &none             &trans       &trans
                                                         &kp LG(V)    &kp LG(C)    &kp LSHFT     &mkp LCLK         &mkp RCLK         &to QWERTY
+            >;
+        };
+
+        bt_layer {
+            display-name = "BT";
+            // Accessed by holding ESC + G simultaneously (combo).
+            // Right home row selects Bluetooth profile to connect/switch to.
+            // Select an empty slot → keyboard enters pairing mode automatically.
+            // ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬─────┬─────┬─────┬─────┬─────┐
+            // │     │     │     │     │     │     │   │     │     │     │     │     │     │
+            // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+            // │     │     │     │     │     │     │   │     │ BT1 │ BT2 │ BT3 │ BT4 │     │
+            // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┤
+            // │     │     │     │     │     │     │   │     │     │     │     │     │     │
+            // └─────┴─────┴─────┴─────┴─────┴─────┘   └─────┴─────┴─────┴─────┴─────┴─────┘
+            //               ╭───────┬───────┬───────╮ ╭───────┬───────┬───────╮
+            //               │       │       │       │ │       │       │       │
+            //               ╰───────┴───────┴───────╯ ╰───────┴───────┴───────╯
+            bindings = <
+                &trans &trans &trans &trans &trans &trans  &trans       &trans       &trans       &trans       &trans &trans
+                &trans &trans &trans &trans &trans &trans  &trans       &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &trans
+                &trans &trans &trans &trans &trans &trans  &trans       &trans       &trans       &trans       &trans &trans
+                                     &trans &trans &trans  &trans       &trans       &trans
             >;
         };
     };
