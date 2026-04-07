@@ -54,6 +54,17 @@
             hold-trigger-on-release;
             bindings = <&kp>, <&kp>;
         };
+        // Copy/paste hold-tap: tap-preferred so ONLY a deliberate hold past
+        // tapping-term fires the command — key rolls never trigger it.
+        hrm_cp: home_row_mod_copypaste {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <400>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <200>;
+            bindings = <&kp>, <&kp>;
+        };
 
         // td_quot: tap=single quote, double-tap=double quote
         td_quot: tap_dance_quot {
@@ -155,7 +166,7 @@
             bindings = <
                 &kp TAB       &kp Q        &kp W        &hrm_l LA(SQT) E &kp R    &kp T         &kp Y        &kp U        &kp I        &hrm_r LA(O) O &kp P      &kp BSPC
                 &lt MOUSE ESC &hrm_l LA(A) A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LGUI F &lt NAV G &kp H     &hrm_r RGUI J &hrm_r RCTRL K &hrm_r RALT L &kp SEMI  &kp RET
-                &kp LGUI      &kp Z        &kp X        &hrm_l LG(C) C &hrm_l LG(V) V &kp B      &kp N        &kp M        &kp COMMA    &kp DOT      &kp FSLH     &kp DEL
+                &kp LGUI      &kp Z        &kp X        &hrm_cp LG(C) C &hrm_cp LG(V) V &kp B      &kp N        &kp M        &kp COMMA    &kp DOT      &kp FSLH     &kp DEL
                                                          &kp LALT     &mo NUMBER   &kp LSHFT     &kp SPACE    &mo SYMBOL   &kp TAB
             >;
         };
