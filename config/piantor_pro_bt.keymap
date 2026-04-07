@@ -19,6 +19,7 @@
 #define NAV    3
 #define MOUSE  4
 #define BT     5
+#define PREC   6
 
 / {
     chosen {
@@ -103,6 +104,15 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp FSLH>, <&kp BSLH>;
+        };
+
+        // Precision mouse movement: very slow ramp (5s to max, quadratic curve)
+        // so short holds stay slow and pixel-accurate.
+        mmv_slow: mouse_move_slow {
+            compatible = "zmk,behavior-mouse-move";
+            #binding-cells = <1>;
+            time-to-max-speed-ms = <5000>;
+            acceleration-exponent = <2>;
         };
 
         // Danish characters via hold (macOS Option+key combos).
@@ -265,13 +275,14 @@
             // │     │     │     │     │     │     │   │     │SPC←  │SPC→  │      │     │     │
             // └─────┴─────┴─────┴─────┴─────┴─────┘   └─────┴──────┴──────┴──────┴─────┴─────┘
             //               ╭───────┬──────┬──────╮ ╭──────┬──────┬──────╮
-            //               │ CMD+V │CMD+C │LSHFT │ │ BTN1 │ BTN2 │ BASE │
+            //               │ CMD+V │CMD+C │PREC  │ │ BTN1 │ BTN2 │ BASE │
             //               ╰───────┴──────┴──────╯ ╰──────┴──────┴──────╯
+            // PREC thumb: tap=LSHFT (shift-click), hold=precision mouse layer
             bindings = <
                 &trans       &trans       &trans       &trans       &trans       &trans        &trans            &trans            &msc SCRL_UP      &msc SCRL_DOWN    &trans       &trans
                 &trans       &trans       &trans       &trans       &trans       &trans        &mmv MOVE_LEFT    &mmv MOVE_DOWN    &mmv MOVE_UP      &mmv MOVE_RIGHT   &trans       &trans
                 &trans       &trans       &trans       &trans       &trans       &trans        &trans            &kp LG(LA(LEFT))  &kp LG(LA(RIGHT)) &none             &trans       &trans
-                                                        &kp LG(V)    &kp LG(C)    &kp LSHFT     &mkp LCLK         &mkp RCLK         &to QWERTY
+                                                        &kp LG(V)    &kp LG(C)    &lt PREC LSHFT  &mkp LCLK     &mkp RCLK         &to QWERTY
             >;
         };
 
@@ -295,6 +306,28 @@
                 &trans &trans &trans &trans &trans &trans  &trans       &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &trans
                 &trans &trans &trans &trans &trans &trans  &trans       &trans       &trans       &trans       &trans &trans
                                      &trans &trans &trans  &trans       &trans       &trans
+            >;
+        };
+
+        prec_layer {
+            display-name = "PREC";
+            // Precision mouse mode: hold PREC thumb in mouse layer.
+            // H/J/K/L use mmv_slow (5s ramp, quadratic) for pixel-accurate movement.
+            // ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌──────┬──────┬──────┬──────┬─────┬─────┐
+            // │     │     │     │     │     │     │   │      │      │SCRL↑ │SCRL↓ │     │     │
+            // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼──────┼──────┼─────┼─────┤
+            // │     │     │     │     │     │     │   │  ←   │  ↓   │  ↑   │  →   │     │     │
+            // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼──────┼──────┼─────┼─────┤
+            // │     │     │     │     │     │     │   │      │      │      │      │     │     │
+            // └─────┴─────┴─────┴─────┴─────┴─────┘   └──────┴──────┴──────┴──────┴─────┴─────┘
+            //               ╭───────┬───────┬───────╮ ╭───────┬───────┬───────╮
+            //               │       │       │  ***  │ │ BTN1  │ BTN2  │ BASE  │
+            //               ╰───────┴───────┴───────╯ ╰───────┴───────┴───────╯
+            bindings = <
+                &trans &trans &trans &trans &trans &trans  &trans                  &trans                  &msc SCRL_UP            &msc SCRL_DOWN          &trans &trans
+                &trans &trans &trans &trans &trans &trans  &mmv_slow MOVE_LEFT     &mmv_slow MOVE_DOWN     &mmv_slow MOVE_UP       &mmv_slow MOVE_RIGHT    &trans &trans
+                &trans &trans &trans &trans &trans &trans  &trans                  &trans                  &trans                  &trans                  &trans &trans
+                                     &trans &trans &trans  &mkp LCLK               &mkp RCLK               &to QWERTY
             >;
         };
     };
