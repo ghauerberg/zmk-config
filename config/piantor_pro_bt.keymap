@@ -224,7 +224,7 @@
             // ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌───────┬───────┬───────┬──────┬─────┬──────┐
             // │ TAB │  !  │  @  │  #  │  $  │  %  │   │ PG_UP │ PG_DN │ PG_UP │ HOME │ END │ BSPC │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├───────┼───────┼───────┼──────┼─────┼──────┤
-            // │LCTL │SCR4 │SCR3 │     │LGUI │     │   │  LEFT │  DOWN │   UP  │RIGHT │ ESC │  `   │
+            // │LCTL │SCR4 │SCR3 │     │LGUI │     │   │  LEFT │  DOWN │   UP  │RIGHT │     │  `   │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├───────┼───────┼───────┼──────┼─────┼──────┤
             // │LSFT │     │     │     │     │Ctrl+B│   │ C-r  │  C-w  │ A-h   │ A-l  │  |  │  ~   │
             // └─────┴─────┴─────┴─────┴─────┴─────┘   └───────┴───────┴───────┴──────┴─────┴──────┘
@@ -233,7 +233,7 @@
             //               ╰──────┴──────┴──────╯ ╰───────┴──────┴───────╯
             bindings = <
                 &kp TAB      &kp EXCL        &kp AT          &kp HASH     &kp DLLR     &kp PRCNT     &kp PG_UP    &kp PG_DN    &kp PG_UP    &kp HOME     &kp END      &kp BSPC
-                &kp LCTRL    &kp LG(LS(N4))  &kp LG(LS(N3))  &none        &kp LGUI     &none         &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp ESC      &kp GRAVE
+                &kp LCTRL    &kp LG(LS(N4))  &kp LG(LS(N3))  &none        &kp LGUI     &none         &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none        &kp GRAVE
                 &kp LSHFT    &none           &none           &none        &none        &kp LC(B)     &kp RC(R)    &kp RC(W)    &kp LA(H)    &kp LA(L)    &kp PIPE     &kp TILDE
                                                               &kp LALT     &kp LCTRL    &kp LSHFT     &trans       &none        &trans
             >;
