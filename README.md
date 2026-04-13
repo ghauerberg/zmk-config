@@ -45,11 +45,10 @@ If you're having pairing issues between the halves or with a host device, flash 
 ```
 ┌─────────┬─────┬─────┬─────────┬─────┬─────┐       ┌─────┬─────┬─────┬─────────┬─────┬──────┐
 │   TAB   │  Q  │  W  │    E    │  R  │  T  │       │  Y  │  U  │  I  │    O    │  P  │ BSPC │
-│         │     │     │ 2×: æ   │     │     │       │     │     │     │  2×: ø  │     │      │
+│         │     │     │ hld: æ  │     │     │       │     │     │     │  hld: ø │     │      │
 ├─────────┼─────┼─────┼─────────┼─────┼─────┤       ├─────┼─────┼─────┼─────────┼─────┼──────┤
 │   ESC   │  A  │  S  │    D    │  F  │  G  │       │  H  │  J  │  K  │    L    │  ;  │  RET │
-│hld:MOUSE│hld:⌘│hld:⌥│  hld:⌃  │hld:⌘│hld:NAV│     │     │hld:⌘│hld:⌃│  hld:⌥  │     │      │
-│         │2×: å│     │         │     │     │       │     │     │     │         │     │      │
+│hld:MOUSE│hld:å│hld:⌥│  hld:⌃  │hld:⌘│hld:NAV│     │     │hld:⌘│hld:⌃│  hld:⌥  │     │      │
 ├─────────┼─────┼─────┼─────────┼─────┼─────┤       ├─────┼─────┼─────┼─────────┼─────┼──────┤
 │   ⌘     │  Z  │  X  │    C    │  V  │  B  │       │  N  │  M  │  ,  │    .    │  /  │ DEL  │
 │         │     │     │ hld:⌘C  │hld:⌘V│    │       │     │     │     │         │     │      │
@@ -59,26 +58,26 @@ If you're having pairing issues between the halves or with a host device, flash 
                              └──────┴─────┴───────┘ └───────┴─────┴─────┘
 ```
 
-**Home row mods** (hold, 250 ms):
+**Home row mods** (hold, 280 ms; opposite-hand key required to trigger):
 
-| Key | Tap | Hold | Double tap |
-|-----|-----|------|------------|
-| ESC | Esc | MOUSE layer | — |
-| A | a | ⌘ Cmd | å |
-| S | s | ⌥ Alt | — |
-| D | d | ⌃ Ctrl | — |
-| F | f | ⌘ Cmd | — |
-| G | g | NAV layer | — |
-| J | j | ⌘ Cmd (right) | — |
-| K | k | ⌃ Ctrl (right) | — |
-| L | l | ⌥ Alt (right) | — |
-| E | e | — | æ |
-| O | o | — | ø |
-| C | c | ⌘C (copy) | — |
-| V | v | ⌘V (paste) | — |
-| '/″ *(NUMBER layer)* | ' | — | " |
-| -/_ *(NUMBER layer)* | - | — | _ |
-| /\\ *(NUMBER layer)* | / | — | \ |
+| Key | Tap | Hold |
+|-----|-----|------|
+| ESC | Esc | MOUSE layer |
+| A | a | å (⌥A) |
+| S | s | ⌥ Alt |
+| D | d | ⌃ Ctrl |
+| F | f | ⌘ Cmd |
+| G | g | NAV layer |
+| E | e | æ (⌥') |
+| O | o | ø (⌥O) |
+| J | j | ⌘ Cmd (right) |
+| K | k | ⌃ Ctrl (right) |
+| L | l | ⌥ Alt (right) |
+| C | c | ⌘C copy *(400 ms hold)* |
+| V | v | ⌘V paste *(400 ms hold)* |
+| '/″ *(NUMBER layer)* | ' | " *(double-tap)* |
+| -/_ *(NUMBER layer)* | - | _ *(double-tap)* |
+| /\\ *(NUMBER layer)* | / | \\ *(double-tap)* |
 
 ---
 
@@ -107,7 +106,7 @@ If you're having pairing issues between the halves or with a host device, flash 
 ┌──────┬──────┬──────┬──────┬──────┬──────┐       ┌───────┬───────┬───────┬───────┬─────┬──────┐
 │ TAB  │  !   │  @   │  #   │  $   │  %   │       │ PG_UP │ PG_DN │ PG_UP │ HOME  │ END │ BSPC │
 ├──────┼──────┼──────┼──────┼──────┼──────┤       ├───────┼───────┼───────┼───────┼─────┼──────┤
-│  ⌃   │⌘⇧4  │ ⌘⇧3  │  ·   │  ⌘   │  ·   │       │   ←   │   ↓   │   ↑   │   →   │ ESC │  `   │
+│  ⌃   │⌘⇧4  │ ⌘⇧3  │  ·   │  ⌘   │  ·   │       │   ←   │   ↓   │   ↑   │   →   │  ·  │  `   │
 │      │(scr4)│(scr3)│      │      │      │       │       │       │       │       │     │      │
 ├──────┼──────┼──────┼──────┼──────┼──────┤       ├───────┼───────┼───────┼───────┼─────┼──────┤
 │  ⇧   │  ·   │  ·   │  ·   │  ·   │ ⌃B   │       │  ⌃R   │  ⌃W   │  ⌥H   │  ⌥L   │  |  │  ~   │
@@ -123,8 +122,8 @@ If you're having pairing issues between the halves or with a host device, flash 
 
 ```
 ┌──────┬──────┬──────┬──────┬────────┬──────┐       ┌─────────┬──────┬──────┬──────┬──────┬──────┐
-│  ·   │  ·   │ ⌘⇧3  │ ⌘⇧4  │ ⌘⌫    │  ·   │       │ tmux [  │  ⌃B  │  ·   │  ·   │  ·   │  ·   │
-│      │      │(scr3)│(scr4)│(delwrd)│      │       │(scrl)   │(pre) │      │      │      │      │
+│  ·   │  ·   │ ⌘⇧3  │ ⌘⇧4  │ ⌘⌫    │ PAIR │       │ tmux [  │  ⌃B  │  ·   │  ·   │  ·   │  ·   │
+│      │      │(scr3)│(scr4)│(delwrd)│(BT)  │       │(scrl)   │(pre) │      │      │      │      │
 ├──────┼──────┼──────┼──────┼────────┼──────┤       ├─────────┼──────┼──────┼──────┼──────┼──────┤
 │  ·   │ BSPC │ ⇧TAB │ TAB  │  ESC   │  ▼   │       │ tmux P  │tmux N│  ·   │  ·   │  ·   │  ·   │
 │      │      │      │      │        │      │       │(prev pn)│(nxt w│      │      │      │      │
@@ -136,6 +135,8 @@ If you're having pairing issues between the halves or with a host device, flash 
                          │  ⌥   │ SPACE │  ⌘   │ │  ⌘   │ SPACE │  ⌥   │
                          └──────┴───────┴──────┘ └──────┴───────┴──────┘
 ```
+
+> **PAIR** clears the current Bluetooth bond and puts the keyboard into pairing mode for a new device.
 
 ---
 
@@ -150,9 +151,50 @@ If you're having pairing issues between the halves or with a host device, flash 
 │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │ SPC← │ SPC→  │   ·    │  ▼   │  ▼   │
 │      │      │      │      │      │      │       │      │(⌘⌥←) │ (⌘⌥→) │        │      │      │
 └──────┴──────┴──────┴──────┴──────┴──────┘       └──────┴──────┴───────┴────────┴──────┴──────┘
-                         ┌──────┬──────┬───────┐ ┌──────┬──────┬────────┐
-                         │ ⌘V   │  ⌘C  │ SHIFT │ │ BTN1 │ BTN2 │  BASE  │
-                         └──────┴──────┴───────┘ └──────┴──────┴────────┘
+                         ┌──────┬──────┬─────────┐ ┌──────┬──────┬────────┐
+                         │ ⌘V   │  ⌘C  │  SHIFT  │ │ BTN1 │ BTN2 │  BASE  │
+                         │      │      │hld:PREC │ │      │      │        │
+                         └──────┴──────┴─────────┘ └──────┴──────┴────────┘
+```
+
+> **PREC thumb**: tap = Shift (for shift-click), hold = enter PREC precision layer.
+
+---
+
+## Layer 5 — BT (hold ESC + G simultaneously)
+
+Selects a Bluetooth profile. Selecting an empty slot puts the keyboard into pairing mode automatically.
+
+```
+┌──────┬──────┬──────┬──────┬──────┬──────┐       ┌──────┬──────┬──────┬──────┬──────┬──────┐
+│  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │
+├──────┼──────┼──────┼──────┼──────┼──────┤       ├──────┼──────┼──────┼──────┼──────┼──────┤
+│  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │ BT 1 │ BT 2 │ BT 3 │ BT 4 │  ▼   │
+├──────┼──────┼──────┼──────┼──────┼──────┤       ├──────┼──────┼──────┼──────┼──────┼──────┤
+│  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │
+└──────┴──────┴──────┴──────┴──────┴──────┘       └──────┴──────┴──────┴──────┴──────┴──────┘
+                         ┌──────┬──────┬──────┐ ┌──────┬──────┬──────┐
+                         │  ▼   │  ▼   │  ▼   │ │  ▼   │  ▼   │  ▼   │
+                         └──────┴──────┴──────┘ └──────┴──────┴──────┘
+```
+
+---
+
+## Layer 6 — PREC (hold PREC thumb in MOUSE layer)
+
+Precision mouse mode — slow quadratic ramp (5 s to max speed) for pixel-accurate movement.
+
+```
+┌──────┬──────┬──────┬──────┬──────┬──────┐       ┌──────┬──────┬───────┬────────┬──────┬──────┐
+│  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │  ▼   │ SCRL↑ │ SCRL↓  │  ▼   │  ▼   │
+├──────┼──────┼──────┼──────┼──────┼──────┤       ├──────┼──────┼───────┼────────┼──────┼──────┤
+│  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │ ←slow│↓slow │ ↑slow │ →slow  │  ▼   │  ▼   │
+├──────┼──────┼──────┼──────┼──────┼──────┤       ├──────┼──────┼───────┼────────┼──────┼──────┤
+│  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │  ▼   │  ▼    │  ▼     │  ▼   │  ▼   │
+└──────┴──────┴──────┴──────┴──────┴──────┘       └──────┴──────┴───────┴────────┴──────┴──────┘
+                         ┌──────┬──────┬─────────┐ ┌──────┬──────┬────────┐
+                         │  ▼   │  ▼   │  *held* │ │ BTN1 │ BTN2 │  BASE  │
+                         └──────┴──────┴─────────┘ └──────┴──────┴────────┘
 ```
 
 ---
@@ -173,7 +215,9 @@ If you're having pairing issues between the halves or with a host device, flash 
 
 | How | Layer |
 |-----|-------|
-| Hold **G** | NAV (layer 3) |
-| Hold **ESC** | MOUSE (layer 4) |
 | Hold left **NUM** thumb | NUMBER (layer 1) |
 | Hold right **SYM** thumb | SYMBOL (layer 2) |
+| Hold **G** | NAV (layer 3) |
+| Hold **ESC** | MOUSE (layer 4) |
+| Hold **ESC + G** simultaneously | BT profile (layer 5) |
+| Hold **PREC thumb** in MOUSE layer | PREC precision mouse (layer 6) |
