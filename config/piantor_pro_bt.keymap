@@ -21,6 +21,14 @@
 #define BT     5
 #define PREC   6
 
+// Slow mouse movement for PREC precision layer (~20% of normal speed).
+// Uses built-in &mmv with explicit low-value MOVE_X/MOVE_Y rather than a
+// custom zmk,behavior-mouse-move node (not supported in ZMK v0.3 user configs).
+#define PREC_UP    MOVE_Y(-300)
+#define PREC_DOWN  MOVE_Y(300)
+#define PREC_LEFT  MOVE_X(-300)
+#define PREC_RIGHT MOVE_X(300)
+
 / {
     chosen {
         zmk,physical-layout = &default_layout;
@@ -104,15 +112,6 @@
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&kp FSLH>, <&kp BSLH>;
-        };
-
-        // Precision mouse movement: very slow ramp (5s to max, quadratic curve)
-        // so short holds stay slow and pixel-accurate.
-        mmv_slow: mouse_move_slow {
-            compatible = "zmk,behavior-mouse-move";
-            #binding-cells = <1>;
-            time-to-max-speed-ms = <5000>;
-            acceleration-exponent = <2>;
         };
 
         // Danish characters via hold (macOS Option+key combos).
@@ -313,7 +312,7 @@
         prec_layer {
             display-name = "PREC";
             // Precision mouse mode: hold PREC thumb in mouse layer.
-            // H/J/K/L use mmv_slow (5s ramp, quadratic) for pixel-accurate movement.
+            // H/J/K/L use &mmv with PREC_* values (300 vs 1500 default = ~20% speed).
             // ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌──────┬──────┬──────┬──────┬─────┬─────┐
             // │     │     │     │     │     │     │   │      │      │SCRL↑ │SCRL↓ │     │     │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼──────┼──────┼─────┼─────┤
@@ -326,7 +325,7 @@
             //               ╰───────┴───────┴───────╯ ╰───────┴───────┴───────╯
             bindings = <
                 &trans &trans &trans &trans &trans &trans  &trans                  &trans                  &msc SCRL_UP            &msc SCRL_DOWN          &trans &trans
-                &trans &trans &trans &trans &trans &trans  &mmv_slow MOVE_LEFT     &mmv_slow MOVE_DOWN     &mmv_slow MOVE_UP       &mmv_slow MOVE_RIGHT    &trans &trans
+                &trans &trans &trans &trans &trans &trans  &mmv PREC_LEFT          &mmv PREC_DOWN          &mmv PREC_UP            &mmv PREC_RIGHT         &trans &trans
                 &trans &trans &trans &trans &trans &trans  &trans                  &trans                  &trans                  &trans                  &trans &trans
                                      &trans &trans &trans  &mkp LCLK               &mkp RCLK               &to QWERTY
             >;
