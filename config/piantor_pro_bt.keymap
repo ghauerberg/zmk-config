@@ -11,6 +11,10 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+// ZMK_POINTING_DEFAULT_MOVE_VAL is a preprocessor define in pointing.h,
+// not a Kconfig symbol. Define it here before the include so the #ifndef
+// guard in pointing.h picks it up. This sets MOVE_UP/DOWN/LEFT/RIGHT speed.
+#define ZMK_POINTING_DEFAULT_MOVE_VAL 1500
 #include <dt-bindings/zmk/pointing.h>
 
 #define QWERTY 0
