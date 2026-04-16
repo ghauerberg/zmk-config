@@ -142,6 +142,8 @@ If you're having pairing issues between the halves or with a host device, flash 
 
 ## Layer 4 — MOUSE (hold ESC)
 
+Fast mouse movement (speed 1500). For pixel-accurate work, hold the PREC thumb to enter Layer 6 at 20% speed.
+
 ```
 ┌──────┬──────┬──────┬──────┬──────┬──────┐       ┌──────┬──────┬───────┬────────┬──────┬──────┐
 │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │  ▼   │ SCRL↓ │ SCRL↑  │  ▼   │  ▼   │
@@ -157,7 +159,10 @@ If you're having pairing issues between the halves or with a host device, flash 
                          └──────┴──────┴─────────┘ └──────┴──────┴────────┘
 ```
 
-> **PREC thumb**: tap = Shift (for shift-click), hold = enter PREC precision layer.
+**Two-speed mouse:**
+- Normal movement (H/J/K/L in this layer): speed **1500** — fast, for moving across the screen
+- Precision movement: hold the **PREC thumb** (left thumb 3) to activate Layer 6 at speed **300** (~20%) — slow enough for pixel-accurate work
+- Tap the PREC thumb for **Shift** (shift-click still works)
 
 ---
 
@@ -182,7 +187,7 @@ Selects a Bluetooth profile. Selecting an empty slot puts the keyboard into pair
 
 ## Layer 6 — PREC (hold PREC thumb in MOUSE layer)
 
-Precision mouse mode — slow quadratic ramp (5 s to max speed) for pixel-accurate movement.
+Precision mouse mode — speed 300 (~20% of normal). Hold PREC thumb while moving H/J/K/L for slow, pixel-accurate control. Release PREC thumb to return to fast mode.
 
 ```
 ┌──────┬──────┬──────┬──────┬──────┬──────┐       ┌──────┬──────┬───────┬────────┬──────┬──────┐
