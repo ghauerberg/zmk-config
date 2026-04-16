@@ -272,7 +272,7 @@
             // Right: vim-style mouse movement (H/J/K/L), scroll on I/O row, buttons on thumbs.
             // Left thumbs: paste / copy (macOS Cmd+V / Cmd+C).
             // ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌─────┬──────┬──────┬──────┬─────┬─────┐
-            // │     │     │     │     │     │     │   │     │      │SCRL↑ │SCRL↓ │     │     │
+            // │     │     │     │     │     │     │   │     │      │SCRL↓ │SCRL↑ │     │     │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼──────┼──────┼──────┼─────┼─────┤
             // │     │     │     │     │     │     │   │ ←   │  ↓   │  ↑   │  →   │     │     │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├─────┼──────┼──────┼──────┼─────┼─────┤
@@ -283,7 +283,7 @@
             //               ╰───────┴──────┴──────╯ ╰──────┴──────┴──────╯
             // PREC thumb: tap=LSHFT (shift-click), hold=precision mouse layer
             bindings = <
-                &trans       &trans       &trans       &trans       &trans       &trans        &trans            &trans            &msc SCRL_UP      &msc SCRL_DOWN    &trans       &trans
+                &trans       &trans       &trans       &trans       &trans       &trans        &trans            &trans            &msc SCRL_DOWN    &msc SCRL_UP      &trans       &trans
                 &trans       &trans       &trans       &trans       &trans       &trans        &mmv MOVE_LEFT    &mmv MOVE_DOWN    &mmv MOVE_UP      &mmv MOVE_RIGHT   &trans       &trans
                 &trans       &trans       &trans       &trans       &trans       &trans        &trans            &kp LG(LA(LEFT))  &kp LG(LA(RIGHT)) &none             &trans       &trans
                                                         &kp LG(V)    &kp LG(C)    &lt PREC LSHFT  &mkp LCLK     &mkp RCLK         &to QWERTY
@@ -318,7 +318,7 @@
             // Precision mouse mode: hold PREC thumb in mouse layer.
             // H/J/K/L use &mmv with PREC_* values (300 vs 1500 default = ~20% speed).
             // ┌─────┬─────┬─────┬─────┬─────┬─────┐   ┌──────┬──────┬──────┬──────┬─────┬─────┐
-            // │     │     │     │     │     │     │   │      │      │SCRL↑ │SCRL↓ │     │     │
+            // │     │     │     │     │     │     │   │      │      │SCRL↓ │SCRL↑ │     │     │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼──────┼──────┼─────┼─────┤
             // │     │     │     │     │     │     │   │  ←   │  ↓   │  ↑   │  →   │     │     │
             // ├─────┼─────┼─────┼─────┼─────┼─────┤   ├──────┼──────┼──────┼──────┼─────┼─────┤
@@ -328,7 +328,7 @@
             //               │       │       │  ***  │ │ BTN1  │ BTN2  │ BASE  │
             //               ╰───────┴───────┴───────╯ ╰───────┴───────┴───────╯
             bindings = <
-                &trans &trans &trans &trans &trans &trans  &trans                  &trans                  &msc SCRL_UP            &msc SCRL_DOWN          &trans &trans
+                &trans &trans &trans &trans &trans &trans  &trans                  &trans                  &msc SCRL_DOWN          &msc SCRL_UP            &trans &trans
                 &trans &trans &trans &trans &trans &trans  &mmv PREC_LEFT          &mmv PREC_DOWN          &mmv PREC_UP            &mmv PREC_RIGHT         &trans &trans
                 &trans &trans &trans &trans &trans &trans  &trans                  &trans                  &trans                  &trans                  &trans &trans
                                      &trans &trans &trans  &mkp LCLK               &mkp RCLK               &to QWERTY
