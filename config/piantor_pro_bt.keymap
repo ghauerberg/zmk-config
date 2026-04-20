@@ -204,21 +204,21 @@
             // ┌───┬───┬───┬───┬───┬───┐   ┌───┬───┬───┬───┬───┬──────┐
             // │ $ │ 1 │ 2 │ 3 │ 4 │ 5 │   │ 6 │ 7 │ 8 │ 9 │ 0 │ BSPC │
             // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼──────┤
-            // │ ? │/\ │ % │ @ │ : │-/_│   │ + │ { │ ( │ ) │ } │  =   │
+            // │ ? │/\ │%/A│@/C│:/G│-/_│   │ + │{/G│(/C│)/A│ } │  =   │
             // ├───┼───┼───┼───┼───┼───┤   ├───┼───┼───┼───┼───┼──────┤
             // │ | │ ! │ # │ & │ ^ │ ~ │   │'/"│ [ │ ] │ ` │/\ │      │
             // └───┴───┴───┴───┴───┴───┘   └───┴───┴───┴───┴───┴──────┘
             //           ╭──────┬─────┬──────╮ ╭───────┬───────┬───────╮
             //           │ LCTL │     │LSHFT │ │ LSHFT │   ~   │   *   │
             //           ╰──────┴─────┴──────╯ ╰───────┴───────┴───────╯
-            // Right home row: arithmetic cluster  -/_ + =  with brackets
+            // Home row mods (hold, opposite-hand required): S=⌥  D=⌃  F=⌘  J=⌘  K=⌃  L=⌥
             // -/_ key: tap=minus, double-tap=underscore
             // '/" key: tap=single quote, double-tap=double quote
             bindings = <
-                &kp DLLR     &kp N1       &kp N2       &kp N3       &kp N4       &kp N5        &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
-                &kp QMARK    &td_slsh     &kp PRCNT    &kp AT       &kp COLON    &td_min       &kp PLUS     &kp LBRC     &kp LPAR     &kp RPAR     &kp RBRC     &kp EQUAL
-                &kp PIPE     &kp EXCL     &kp HASH     &kp AMPS     &kp CARET    &kp TILDE     &td_quot     &kp LBKT     &kp RBKT     &kp GRAVE    &td_slsh     &trans
-                                                        &kp LCTRL    &trans       &kp LSHFT     &kp LSHFT    &kp TILDE    &kp STAR
+                &kp DLLR     &kp N1       &kp N2            &kp N3           &kp N4           &kp N5        &kp N6       &kp N7            &kp N8            &kp N9           &kp N0       &kp BSPC
+                &kp QMARK    &td_slsh     &hrm_l LALT PRCNT &hrm_l LCTRL AT  &hrm_l LGUI COLON &td_min      &kp PLUS     &hrm_r RGUI LBRC  &hrm_r RCTRL LPAR &hrm_r RALT RPAR &kp RBRC     &kp EQUAL
+                &kp PIPE     &kp EXCL     &kp HASH          &kp AMPS         &kp CARET        &kp TILDE     &td_quot     &kp LBKT          &kp RBKT          &kp GRAVE        &td_slsh     &trans
+                                                             &kp LCTRL        &trans           &kp LSHFT     &kp LSHFT    &kp TILDE         &kp STAR
             >;
         };
 
