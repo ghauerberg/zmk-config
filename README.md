@@ -53,9 +53,9 @@ If you're having pairing issues between the halves or with a host device, flash 
 │   ⌘     │  Z  │  X  │    C    │  V  │  B  │       │  N  │  M  │  ,  │    .    │  /  │ DEL  │
 │         │     │     │ hld:⌘C  │hld:⌘V│    │       │     │     │     │         │     │      │
 └─────────┴─────┴─────┴─────────┴─────┴─────┘       └─────┴─────┴─────┴─────────┴─────┴──────┘
-                             ┌──────┬─────┬───────┐ ┌───────┬─────┬─────┐
-                             │  ⌥   │ NUM │ SHIFT │ │ SPACE │ SYM │ TAB │
-                             └──────┴─────┴───────┘ └───────┴─────┴─────┘
+                             ┌───────┬─────┬───────┐ ┌───────┬─────┬─────┐
+                             │ FKEYS │ NUM │ SHIFT │ │ SPACE │ SYM │ TAB │
+                             └───────┴─────┴───────┘ └───────┴─────┴─────┘
 ```
 
 **Home row mods** (hold, 280 ms; opposite-hand key required to trigger):
@@ -78,6 +78,8 @@ If you're having pairing issues between the halves or with a host device, flash 
 | '/″ *(NUMBER layer)* | ' | " *(double-tap)* |
 | -/_ *(NUMBER layer)* | - | _ *(double-tap)* |
 | /\\ *(NUMBER layer)* | / | \\ *(double-tap)* |
+
+**Left thumb #1** was previously `⌥ Alt`; it is now the **FKEYS** layer key.
 
 ---
 
@@ -206,6 +208,29 @@ Precision mouse mode — speed 300 (~20% of normal). Hold PREC thumb while movin
 
 ---
 
+## Layer 7 — FKEYS (hold left FKEYS thumb)
+
+```
+┌──────┬──────┬──────┬──────┬──────┬──────┐       ┌──────┬──────┬──────┬──────┬──────┬──────┐
+│  F1  │  F2  │  F3  │  F4  │  F5  │  F6  │       │  F7  │  F8  │  F9  │ F10  │ F11  │ F12  │
+│2×:⌥F1│2×:⌥F2│2×:⌥F3│2×:⌥F4│2×:⌥F5│2×:⌥F6│       │2×:⌥F7│2×:⌥F8│2×:⌥F9│2×:⌥F10│2×:⌥F11│2×:⌥F12│
+├──────┼──────┼──────┼──────┼──────┼──────┤       ├──────┼──────┼──────┼──────┼──────┼──────┤
+│  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │
+│      │(hld:⌥)│(hld:⌃)│(hld:⌘)│     │     │       │     │(hld:⌘)│(hld:⌃)│(hld:⌥)│     │     │
+├──────┼──────┼──────┼──────┼──────┼──────┤       ├──────┼──────┼──────┼──────┼──────┼──────┤
+│  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │
+└──────┴──────┴──────┴──────┴──────┴──────┘       └──────┴──────┴──────┴──────┴──────┴──────┘
+                      ┌──────┬──────┬──────┐ ┌──────┬──────┬──────┐
+                      │*held*│  ▼   │  ▼   │ │  ▼   │  ▼   │  ▼   │
+                      └──────┴──────┴──────┘ └──────┴──────┴──────┘
+```
+
+- **Single tap** → F1–F12
+- **Double-tap** → Alt+F1–F12 (e.g. double-tap F2 to switch to Linux TTY 2)
+- Home row is transparent — QWERTY home row mods (S=⌥, D=⌃, F=⌘ / J=⌘, K=⌃, L=⌥) fall through for other modifier combos like Ctrl+F5
+
+---
+
 ## Macros
 
 | Name | Keys sent | Purpose |
@@ -222,6 +247,7 @@ Precision mouse mode — speed 300 (~20% of normal). Hold PREC thumb while movin
 
 | How | Layer |
 |-----|-------|
+| Hold left **FKEYS** thumb | FKEYS (layer 7) |
 | Hold left **NUM** thumb | NUMBER (layer 1) |
 | Hold right **SYM** thumb | SYMBOL (layer 2) |
 | Hold **G** | NAV (layer 3) |
