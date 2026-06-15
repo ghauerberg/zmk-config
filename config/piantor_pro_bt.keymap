@@ -81,32 +81,65 @@
             bindings = <&kp>, <&kp>;
         };
 
-        // td_quot: tap=single quote, double-tap=double quote
+        // Under Danish (nodeadkeys) layout:
+        //   SQT  (HID 0x34) → ø
+        //   BSLH (HID 0x31) → '
+        //   DQT = LS(N2)    → "
+        // td_quot: tap=' (BSLH), double-tap=" (LS(N2))
         td_quot: tap_dance_quot {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp SQT>, <&kp DQT>;
+            bindings = <&kp BSLH>, <&kp LS(N2)>;
         };
 
-        // td_min: tap=minus, double-tap=underscore
+        // Under Danish (nodeadkeys) layout:
+        //   FSLH (HID 0x38) → -
+        //   LS(FSLH)        → _
+        // td_min: tap=- (FSLH), double-tap=_ (LS(FSLH))
         td_min: tap_dance_min {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp MINUS>, <&kp UNDER>;
+            bindings = <&kp FSLH>, <&kp LS(FSLH)>;
         };
 
-        // td_slsh: tap=forward slash, double-tap=backslash
+        // Under Danish (nodeadkeys) layout:
+        //   LS(N7) (HID 0x24+Shift) → /
+        //   RA(NUBS) (LSGT level 3)  → \
+        // td_slsh: tap=/ (LS(N7)), double-tap=\ (RA(NUBS))
         td_slsh: tap_dance_slsh {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp FSLH>, <&kp BSLH>;
+            bindings = <&kp LS(N7)>, <&kp RA(NUBS)>;
         };
 
-        // Danish characters via hold (macOS Option+key combos).
-        // hrm is reused: hold=Option+X sends å/æ/ø, tap=normal letter.
+        // Under Danish (nodeadkeys) layout:
+        //   LBKT (HID 0x2F) → å
+        //   SEMI (HID 0x33) → æ
+        //   SQT  (HID 0x34) → ø
+        // td_a: tap=A / hold=⌘,  double-tap=å
+        td_a: tap_dance_a {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hrm_l LA(A) A>, <&kp LBKT>;
+        };
+        // td_e: tap=E,  double-tap=æ
+        td_e: tap_dance_e {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hrm_l LA(SQT) E>, <&kp SEMI>;
+        };
+        // td_o: tap=O,  double-tap=ø
+        td_o: tap_dance_o {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&hrm_r LA(O) O>, <&kp SQT>;
+        };
     };
 
     macros {
@@ -179,9 +212,9 @@
             //                       ╰──────┴─────┴──────╯ ╰───────┴─────┴─────╯
             // Hold (opposite-hand key required): A=å  E=æ  O=ø  S=LALT  D=LCTRL  F=LGUI  J=RGUI  K=RCTRL  L=RALT
             bindings = <
-                &kp TAB       &kp Q        &kp W        &hrm_l LA(SQT) E &kp R    &kp T         &kp Y        &kp U        &kp I        &hrm_r LA(O) O &kp P      &kp BSPC
-                &lt MOUSE ESC &hrm_l LA(A) A &hrm_l LALT S &hrm_l LCTRL D &hrm_l LGUI F &lt NAV G &kp H     &hrm_r RGUI J &hrm_r RCTRL K &hrm_r RALT L &kp SEMI  &kp RET
-                &kp LGUI      &kp Z        &kp X        &hrm_cp LG(C) C &hrm_cp LG(V) V &kp B      &kp N        &kp M        &kp COMMA    &kp DOT      &kp FSLH     &kp DEL
+                &kp TAB       &kp Q        &kp W        &td_e          &kp R    &kp T         &kp Y        &kp U        &kp I        &td_o          &kp P      &kp BSPC
+                &lt MOUSE ESC &td_a        &hrm_l LALT S &hrm_l LCTRL D &hrm_l LGUI F &lt NAV G &kp H     &hrm_r RGUI J &hrm_r RCTRL K &hrm_r RALT L &kp LS(COMMA) &kp RET
+                &kp LGUI      &kp Z        &kp X        &hrm_cp LG(C) C &hrm_cp LG(V) V &kp B      &kp N        &kp M        &kp COMMA    &kp DOT      &kp LS(N7)     &kp DEL
                                                          &kp LALT     &mo NUMBER   &kp LSHFT     &kp SPACE    &mo SYMBOL   &kp TAB
             >;
         };
@@ -198,14 +231,15 @@
             //           ╭──────┬─────┬──────╮ ╭───────┬───────┬───────╮
             //           │ LCTL │     │LSHFT │ │ LSHFT │   ~   │   `   │
             //           ╰──────┴─────┴──────╯ ╰───────┴───────┴───────╯
-            // Right home row: arithmetic cluster  -/_ + =  with brackets
-            // -/_ key: tap=minus, double-tap=underscore
-            // '/" key: tap=single quote, double-tap=double quote
+            // Left home row: arithmetic cluster  -/_ + =  with brackets
+            // All character keys use Danish (nodeadkeys) positions.
+            // $ same as US (LS(N4)) @=RA(N2) {=RA(N7) }=RA(N0) [=RA(N8) ]=RA(N9)
+            // |,~,^,& in different shifted positions from US layout.
             bindings = <
-                &kp DLLR     &kp N1       &kp N2       &kp N3       &kp N4       &kp N5        &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
-                &kp QMARK    &td_slsh     &kp PRCNT    &kp AT       &kp COLON    &td_min       &kp PLUS     &kp LBRC     &kp LPAR     &kp RPAR     &kp RBRC     &kp EQUAL
-                &kp PIPE     &kp EXCL     &kp HASH     &kp AMPS     &kp CARET    &kp TILDE     &td_quot     &kp LBKT     &kp RBKT     &kp GRAVE    &td_slsh     &trans
-                                                        &kp LCTRL    &trans       &kp LSHFT     &kp LSHFT    &kp TILDE    &kp GRAVE
+                &kp DLLR    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5        &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
+                &kp LS(MINUS) &td_slsh    &kp PRCNT    &kp RA(N2)   &kp LS(DOT)  &td_min       &kp MINUS    &kp RA(N7)   &kp LS(N8)   &kp LS(N9)   &kp RA(N0)   &kp LS(N0)
+                &kp RA(EQUAL) &kp EXCL    &kp HASH     &kp LS(N6)   &kp LS(RBKT) &kp RA(RBKT)  &td_quot     &kp RA(N8)   &kp RA(N9)   &kp LS(EQUAL) &td_slsh     &trans
+                                                         &kp LCTRL    &trans       &kp LSHFT     &kp LSHFT    &kp RA(RBKT) &kp LS(EQUAL)
             >;
         };
 
@@ -221,11 +255,13 @@
             //               ╭──────┬──────┬──────╮ ╭───────┬──────┬───────╮
             //               │ LALT │ LCTL │LSHFT │ │       │      │       │
             //               ╰──────┴──────┴──────╯ ╰───────┴──────┴───────╯
+            // @ uses AltGr (RA(N2)), $ same as US (DLLR).
+            // `, |, ~ also change position under Danish layout.
             bindings = <
-                &kp TAB      &kp EXCL        &kp AT          &kp HASH     &kp DLLR     &kp PRCNT     &kp PG_UP    &kp PG_DN    &kp PG_UP    &kp HOME     &kp END      &kp BSPC
-                &kp LCTRL    &kp LG(LS(N4))  &kp LG(LS(N3))  &none        &kp LGUI     &none         &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp ESC      &kp GRAVE
-                &kp LSHFT    &none           &none           &none        &none        &kp LC(B)     &kp RC(R)    &kp RC(W)    &kp LA(H)    &kp LA(L)    &kp PIPE     &kp TILDE
-                                                              &kp LALT     &kp LCTRL    &kp LSHFT     &trans       &none        &trans
+                &kp TAB      &kp EXCL        &kp RA(N2)       &kp HASH     &kp DLLR     &kp PRCNT     &kp PG_UP    &kp PG_DN    &kp PG_UP    &kp HOME     &kp END      &kp BSPC
+                &kp LCTRL    &kp LG(LS(N4))  &kp LG(LS(N3))  &none        &kp LGUI     &none         &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp ESC      &kp LS(EQUAL)
+                &kp LSHFT    &none           &none           &none        &none        &kp LC(B)     &kp RC(R)    &kp RC(W)    &kp LA(H)    &kp LA(L)    &kp RA(EQUAL) &kp RA(RBKT)
+                                                               &kp LALT     &kp LCTRL    &kp LSHFT     &trans       &none        &trans
             >;
         };
 

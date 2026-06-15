@@ -1,5 +1,12 @@
 # Piantor Pro BT — Keymap Reference
 
+> **⚠ This keymap requires the host OS to be set to Danish (no dead keys) layout.**
+> On macOS: System Settings → Keyboard → Input Sources → Add Danish.
+> On Linux (GNOME): Settings → Keyboard → Input Sources → Add Danish (no dead keys).
+> Characters like `å` `æ` `ø` are produced by sending the scancode that the Danish layout
+> interprets as that character (e.g. `&kp LBKT` → `å`, `&kp SEMI` → `æ`, `&kp SQT` → `ø`).
+> Symbols `@` `|` `~` `` ` `` and `^` also change position; `$` stays the same (`⇧4`).
+
 ## Building & Flashing
 
 ### GitHub Actions (recommended)
@@ -48,18 +55,21 @@ If you're having pairing issues between the halves or with a host device, flash 
 │         │     │     │ 2×: æ   │     │     │       │     │     │     │  2×: ø  │     │      │
 ├─────────┼─────┼─────┼─────────┼─────┼─────┤       ├─────┼─────┼─────┼─────────┼─────┼──────┤
 │   ESC   │  A  │  S  │    D    │  F  │  G  │       │  H  │  J  │  K  │    L    │  ;  │  RET │
-│hld:MOUSE│hld:⌘│hld:⌥│  hld:⌃  │hld:⌘│hld:NAV│     │     │hld:⌘│hld:⌃│  hld:⌥  │     │      │
+│hld:MOUSE│hld:⌘│hld:⌥│  hld:⌃  │hld:⌘│hld:NAV│     │     │hld:⌘│hld:⌃│  hld:⌥  │ ①   │      │
 │         │2×: å│     │         │     │     │       │     │     │     │         │     │      │
 ├─────────┼─────┼─────┼─────────┼─────┼─────┤       ├─────┼─────┼─────┼─────────┼─────┼──────┤
 │   ⌘     │  Z  │  X  │    C    │  V  │  B  │       │  N  │  M  │  ,  │    .    │  /  │ DEL  │
-│         │     │     │ hld:⌘C  │hld:⌘V│    │       │     │     │     │         │     │      │
+│         │     │     │ hld:⌘C  │hld:⌘V│    │       │     │     │     │         │ ②   │      │
 └─────────┴─────┴─────┴─────────┴─────┴─────┘       └─────┴─────┴─────┴─────────┴─────┴──────┘
                              ┌──────┬─────┬───────┐ ┌───────┬─────┬─────┐
                              │  ⌥   │ NUM │ SHIFT │ │ SPACE │ SYM │ TAB │
                              └──────┴─────┴───────┘ └───────┴─────┴─────┘
 ```
 
-**Home row mods** (hold, 250 ms):
+① `;` = `⇧,` (Shift+Comma) under Danish layout — also on NUMBER layer
+② `/` = `⇧7` (Shift+N7) under Danish layout — also on NUMBER layer
+
+**Home row mods** (hold, 280 ms):
 
 | Key | Tap | Hold | Double tap |
 |-----|-----|------|------------|
@@ -177,3 +187,36 @@ If you're having pairing issues between the halves or with a host device, flash 
 | Hold **ESC** | MOUSE (layer 4) |
 | Hold left **NUM** thumb | NUMBER (layer 1) |
 | Hold right **SYM** thumb | SYMBOL (layer 2) |
+
+---
+
+## Host Configuration
+
+### macOS
+
+1. **System Settings → Keyboard → Input Sources → Add "Danish"**
+2. Set Danish as the Piantor's input source (per-app or per-device via input source menu extra)
+3. No key remapping needed — macOS interprets HID scancodes correctly
+
+### Linux (keyd for LGUI → LCTRL)
+
+On Linux, the ZMK `&kp LGUI` (⌘ Cmd) key needs to act as Ctrl for shortcuts like ⌘C/⌘V. Use [keyd](https://github.com/rvaiya/keyd) to remap only the Piantor:
+
+```ini
+# /etc/keyd/default.conf (or /etc/keyd/piantor.conf)
+[ids]
+1d50:615e
+
+[1d50:615e]
+leftmeta = leftcontrol
+```
+
+1. Install keyd: `sudo dnf copr enable atim/keyd && sudo dnf install keyd`
+2. Add the config block above to `/etc/keyd/default.conf`
+3. Restart: `sudo systemctl restart keyd`
+
+This makes `LGUI` (the `⌘` key at the Z-position) produce Ctrl on Linux, so ⌘C sends Ctrl+C, ⌘V sends Ctrl+V, etc.
+
+2. **Set Danish (no dead keys) input source:**
+   - Settings → Keyboard → Input Sources → Add "Danish (no dead keys)"
+   - The "no dead keys" variant is required for `å` (via `&kp LBKT`) to work correctly
