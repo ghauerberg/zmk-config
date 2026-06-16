@@ -220,3 +220,14 @@ This makes `LGUI` (the `⌘` key at the Z-position) produce Ctrl on Linux, so �
 2. **Set Danish (no dead keys) input source:**
    - Settings → Keyboard → Input Sources → Add "Danish (no dead keys)"
    - The "no dead keys" variant is required for `å` (via `&kp LBKT`) to work correctly
+
+### Quick start after flashing
+
+```bash
+./post-flash-setup.sh
+```
+
+This script:
+- Adds the Piantor‑specific keyd section to `/etc/keyd/default.conf`
+- Restarts keyd
+- Adds Danish (no dead keys) to your GNOME input sources
