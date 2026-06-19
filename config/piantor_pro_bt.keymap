@@ -144,23 +144,23 @@
         // Under Danish (nodeadkeys) layout:
         //   LS(COMMA) → ;
         //   LS(DOT)   → :
-        // td_sc: tap=;, double-tap=:
-        td_sc: tap_dance_sc {
-            compatible = "zmk,behavior-tap-dance";
+        // mm_sc: unshifted=;, shifted=:
+        mm_sc: mod_morph_sc {
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
             bindings = <&kp LS(COMMA)>, <&kp LS(DOT)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         // Under Danish (nodeadkeys) layout:
         //   LS(N7)    → /
         //   LS(MINUS) → ?
-        // td_fq: tap=/, double-tap=?
-        td_fq: tap_dance_fq {
-            compatible = "zmk,behavior-tap-dance";
+        // mm_fq: unshifted=/, shifted=?
+        mm_fq: mod_morph_fq {
+            compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            tapping-term-ms = <200>;
             bindings = <&kp LS(N7)>, <&kp LS(MINUS)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
 
@@ -235,8 +235,8 @@
             // Hold (opposite-hand key required): A=å  E=æ  O=ø  S=LALT  D=LCTRL  F=LGUI  J=RGUI  K=RCTRL  L=RALT
             bindings = <
                 &kp TAB       &kp Q        &kp W        &td_e          &kp R    &kp T         &kp Y        &kp U        &kp I        &td_o          &kp P      &kp BSPC
-                &lt MOUSE ESC &td_a        &hrm_l LALT S &hrm_l LCTRL D &hrm_l LGUI F &lt NAV G &kp H     &hrm_r RGUI J &hrm_r RCTRL K &hrm_r RALT L &td_sc &kp RET
-                &kp LGUI      &kp Z        &kp X        &hrm_cp LG(C) C &hrm_cp LG(V) V &kp B      &kp N        &kp M        &kp COMMA    &kp DOT      &td_fq     &kp DEL
+                &lt MOUSE ESC &td_a        &hrm_l LALT S &hrm_l LCTRL D &hrm_l LGUI F &lt NAV G &kp H     &hrm_r RGUI J &hrm_r RCTRL K &hrm_r RALT L &mm_sc &kp RET
+                &kp LGUI      &kp Z        &kp X        &hrm_cp LG(C) C &hrm_cp LG(V) V &kp B      &kp N        &kp M        &kp COMMA    &kp DOT      &mm_fq     &kp DEL
                                                          &kp LALT     &mo NUMBER   &kp LSHFT     &kp SPACE    &mo SYMBOL   &kp TAB
             >;
         };
