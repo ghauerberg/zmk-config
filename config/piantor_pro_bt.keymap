@@ -85,60 +85,66 @@
         //   SQT  (HID 0x34) → ø
         //   BSLH (HID 0x31) → '
         //   DQT = LS(N2)    → "
-        // td_quot: tap=' (BSLH), double-tap=" (LS(N2))
-        td_quot: tap_dance_quot {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
+        // ht_quot: tap=' (BSLH), hold=" (LS(N2))
+        ht_quot: hold_tap_quot {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&kp BSLH>, <&kp LS(N2)>;
+            bindings = <&kp>, <&kp>;
         };
 
         // Under Danish (nodeadkeys) layout:
         //   FSLH (HID 0x38) → -
         //   LS(FSLH)        → _
-        // td_min: tap=- (FSLH), double-tap=_ (LS(FSLH))
-        td_min: tap_dance_min {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
+        // ht_min: tap=- (FSLH), hold=_ (LS(FSLH))
+        ht_min: hold_tap_min {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&kp FSLH>, <&kp LS(FSLH)>;
+            bindings = <&kp>, <&kp>;
         };
 
         // Under Danish (nodeadkeys) layout:
         //   LS(N7) (HID 0x24+Shift) → /
         //   RA(NUBS) (LSGT level 3)  → \
-        // td_slsh: tap=/ (LS(N7)), double-tap=\ (RA(NUBS))
-        td_slsh: tap_dance_slsh {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
+        // ht_slsh: tap=/ (LS(N7)), hold=\ (RA(NUBS))
+        ht_slsh: hold_tap_slsh {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&kp LS(N7)>, <&kp RA(NUBS)>;
+            bindings = <&kp>, <&kp>;
         };
 
         // Under Danish (nodeadkeys) layout:
         //   LBKT (HID 0x2F) → å
         //   SEMI (HID 0x33) → æ
         //   SQT  (HID 0x34) → ø
-        // td_a: tap=A / hold=⌘,  double-tap=å
-        td_a: tap_dance_a {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
+        // ht_a: tap=A, hold=å
+        ht_a: hold_tap_a {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&hrm_l LA(A) A>, <&kp LBKT>;
+            bindings = <&kp>, <&kp>;
         };
-        // td_e: tap=E,  double-tap=æ
-        td_e: tap_dance_e {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
+        // ht_e: tap=E, hold=æ
+        ht_e: hold_tap_e {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&hrm_l LA(SQT) E>, <&kp SEMI>;
+            bindings = <&kp>, <&kp>;
         };
-        // td_o: tap=O,  double-tap=ø
-        td_o: tap_dance_o {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
+        // ht_o: tap=O, hold=ø
+        ht_o: hold_tap_o {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&hrm_r LA(O) O>, <&kp SQT>;
+            bindings = <&kp>, <&kp>;
         };
 
         // Under Danish (nodeadkeys) layout:
@@ -234,10 +240,10 @@
             //                       ╰──────┴─────┴──────╯ ╰───────┴─────┴─────╯
             // Hold (opposite-hand key required): A=å  E=æ  O=ø  S=LALT  D=LCTRL  F=LGUI  J=RGUI  K=RCTRL  L=RALT
             bindings = <
-                &kp TAB       &kp Q        &kp W        &td_e          &kp R    &kp T         &kp Y        &kp U        &kp I        &td_o          &kp P      &kp BSPC
-                &lt MOUSE ESC &td_a        &hrm_l LALT S &hrm_l LCTRL D &hrm_l LGUI F &lt NAV G &kp H     &hrm_r RGUI J &hrm_r RCTRL K &hrm_r RALT L &mm_sc &kp RET
+                &kp TAB       &kp Q        &kp W        &ht_e E æ     &kp R    &kp T         &kp Y        &kp U        &kp I        &ht_o O ø     &kp P      &kp BSPC
+                &lt MOUSE ESC &ht_a A å     &hrm_l LALT S &hrm_l LCTRL D &hrm_l LGUI F &lt NAV G &kp H     &hrm_r RGUI J &hrm_r RCTRL K &hrm_r RALT L &mm_sc &kp RET
                 &kp LGUI      &kp Z        &kp X        &hrm_cp LG(C) C &hrm_cp LG(V) V &kp B      &kp N        &kp M        &kp COMMA    &kp DOT      &mm_fq     &kp DEL
-                                                         &kp LALT     &mo NUMBER   &kp LSHFT     &kp SPACE    &mo SYMBOL   &kp TAB
+                                                          &kp LALT     &mo NUMBER   &kp LSHFT     &kp SPACE    &mo SYMBOL   &kp TAB
             >;
         };
 
@@ -259,9 +265,9 @@
             // |,~,^,& in different shifted positions from US layout.
             bindings = <
                 &kp DLLR    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5        &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
-                &kp LS(MINUS) &td_slsh    &kp PRCNT    &kp RA(N2)   &kp LS(DOT)  &td_min       &kp MINUS    &kp RA(N7)   &kp LS(N8)   &kp LS(N9)   &kp RA(N0)   &kp LS(N0)
-                &kp RA(EQUAL) &kp EXCL    &kp HASH     &kp LS(N6)   &kp LS(RBKT) &kp RA(RBKT)  &td_quot     &kp RA(N8)   &kp RA(N9)   &kp LS(EQUAL) &td_slsh     &trans
-                                                         &kp LCTRL    &trans       &kp LSHFT     &kp LSHFT    &kp RA(RBKT) &kp LS(EQUAL)
+                &kp LS(MINUS) &ht_slsh / \\     &kp PRCNT    &kp RA(N2)   &kp LS(DOT)  &ht_min - _     &kp MINUS    &kp RA(N7)   &kp LS(N8)   &kp LS(N9)   &kp RA(N0)   &kp LS(N0)
+                &kp RA(EQUAL) &kp EXCL    &kp HASH     &kp LS(N6)   &kp LS(RBKT) &kp RA(RBKT)  &ht_quot ' "     &kp RA(N8)   &kp RA(N9)   &kp LS(EQUAL) &ht_slsh / \\     &trans
+                                                          &kp LCTRL    &trans       &kp LSHFT     &kp LSHFT    &kp RA(RBKT) &kp LS(EQUAL)
             >;
         };
 
