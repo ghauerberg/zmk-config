@@ -240,8 +240,8 @@
             //                       ╰──────┴─────┴──────╯ ╰───────┴─────┴─────╯
             // Hold (opposite-hand key required): A=å  E=æ  O=ø  S=LALT  D=LCTRL  F=LGUI  J=RGUI  K=RCTRL  L=RALT
             bindings = <
-                &kp TAB       &kp Q        &kp W        &ht_e E æ     &kp R    &kp T         &kp Y        &kp U        &kp I        &ht_o O ø     &kp P      &kp BSPC
-                &lt MOUSE ESC &ht_a A å     &hrm_l LALT S &hrm_l LCTRL D &hrm_l LGUI F &lt NAV G &kp H     &hrm_r RGUI J &hrm_r RCTRL K &hrm_r RALT L &mm_sc &kp RET
+                &kp TAB       &kp Q        &kp W        &ht_e SEMI E     &kp R    &kp T         &kp Y        &kp U        &kp I        &ht_o SQT O     &kp P      &kp BSPC
+                &lt MOUSE ESC &ht_a LBKT A     &hrm_l LALT S &hrm_l LCTRL D &hrm_l LGUI F &lt NAV G &kp H     &hrm_r RGUI J &hrm_r RCTRL K &hrm_r RALT L &mm_sc &kp RET
                 &kp LGUI      &kp Z        &kp X        &hrm_cp LG(C) C &hrm_cp LG(V) V &kp B      &kp N        &kp M        &kp COMMA    &kp DOT      &mm_fq     &kp DEL
                                                           &kp LALT     &mo NUMBER   &kp LSHFT     &kp SPACE    &mo SYMBOL   &kp TAB
             >;
@@ -265,8 +265,8 @@
             // |,~,^,& in different shifted positions from US layout.
             bindings = <
                 &kp DLLR    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5        &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
-                &kp LS(MINUS) &ht_slsh / \\     &kp PRCNT    &kp RA(N2)   &kp LS(DOT)  &ht_min - _     &kp MINUS    &kp RA(N7)   &kp LS(N8)   &kp LS(N9)   &kp RA(N0)   &kp LS(N0)
-                &kp RA(EQUAL) &kp EXCL    &kp HASH     &kp LS(N6)   &kp LS(RBKT) &kp RA(RBKT)  &ht_quot ' "     &kp RA(N8)   &kp RA(N9)   &kp LS(EQUAL) &ht_slsh / \\     &trans
+                &kp LS(MINUS) &ht_slsh RA(NUBS) LS(N7)     &kp PRCNT    &kp RA(N2)   &kp LS(DOT)  &ht_min LS(FSLH) FSLH     &kp MINUS    &kp RA(N7)   &kp LS(N8)   &kp LS(N9)   &kp RA(N0)   &kp LS(N0)
+                &kp RA(EQUAL) &kp EXCL    &kp HASH     &kp LS(N6)   &kp LS(RBKT) &kp RA(RBKT)  &ht_quot LS(N2) BSLH     &kp RA(N8)   &kp RA(N9)   &kp LS(EQUAL) &ht_slsh RA(NUBS) LS(N7)     &trans
                                                           &kp LCTRL    &trans       &kp LSHFT     &kp LSHFT    &kp RA(RBKT) &kp LS(EQUAL)
             >;
         };
