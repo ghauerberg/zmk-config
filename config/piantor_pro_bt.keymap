@@ -261,11 +261,11 @@
             //           ╰──────┴─────┴──────╯ ╰───────┴───────┴───────╯
             // Left home row: arithmetic cluster  -/_ + =  with brackets
             // All character keys use Danish (nodeadkeys) positions.
-            // macOS-native mappings: @=LS(N2) \=LS(RA(N7)) $=RA(N4)
-            // Linux: LS(N2)=", LS(RA(N7))=÷ — remapped via keyd.
+            // macOS-native mappings: @=RA(N2) \=LS(RA(N7)) $=RA(N4)
+            // Linux: RA(N2)=@, LS(RA(N7))=÷ — remapped via keyd.
             bindings = <
                 &kp RA(N4)    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5        &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
-                &kp LS(MINUS) &ht_slsh LS(RA(N7)) LS(N7)     &kp PRCNT    &kp LS(N2)   &kp LS(DOT)  &ht_min LS(FSLH) FSLH     &kp MINUS    &kp RA(N7)   &kp LS(N8)   &kp LS(N9)   &kp RA(N0)   &kp LS(N0)
+                &kp LS(MINUS) &ht_slsh LS(RA(N7)) LS(N7)     &kp PRCNT    &kp RA(N2)   &kp LS(DOT)  &ht_min LS(FSLH) FSLH     &kp MINUS    &kp RA(N7)   &kp LS(N8)   &kp LS(N9)   &kp RA(N0)   &kp LS(N0)
                 &kp RA(EQUAL) &kp EXCL    &kp HASH     &kp LS(N6)   &kp LS(RBKT) &kp RA(RBKT)  &ht_quot LS(N2) BSLH     &kp RA(N8)   &kp RA(N9)   &kp LS(EQUAL) &ht_slsh LS(RA(N7)) LS(N7)     &trans
                                                           &kp LCTRL    &trans       &kp LSHFT     &kp LSHFT    &kp RA(RBKT) &kp LS(EQUAL)
             >;
@@ -283,10 +283,10 @@
             //               ╭──────┬──────┬──────╮ ╭───────┬──────┬───────╮
             //               │ LALT │ LCTL │LSHFT │ │       │      │       │
             //               ╰──────┴──────┴──────╯ ╰───────┴──────┴───────╯
-            // macOS-native: @=LS(N2) (=Shift+2), $=RA(N4).
+            // macOS-native: @=RA(N2) (=Option+2), $=RA(N4).
             // `, |, ~ also change position under Danish layout.
             bindings = <
-                &kp TAB      &kp EXCL        &kp LS(N2)       &kp HASH     &kp RA(N4)     &kp PRCNT     &kp PG_UP    &kp PG_DN    &kp PG_UP    &kp HOME     &kp END      &kp BSPC
+                &kp TAB      &kp EXCL        &kp RA(N2)       &kp HASH     &kp RA(N4)     &kp PRCNT     &kp PG_UP    &kp PG_DN    &kp PG_UP    &kp HOME     &kp END      &kp BSPC
                 &kp LCTRL    &kp LG(LS(N4))  &kp LG(LS(N3))  &none        &kp LGUI     &none         &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &kp ESC      &kp LS(EQUAL)
                 &kp LSHFT    &none           &none           &none        &none        &kp LC(B)     &kp RC(R)    &kp RC(W)    &kp LA(H)    &kp LA(L)    &kp RA(EQUAL) &kp RA(RBKT)
                                                                &kp LALT     &kp LCTRL    &kp LSHFT     &trans       &none        &trans
