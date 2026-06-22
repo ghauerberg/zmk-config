@@ -108,8 +108,8 @@
 
         // Under Danish (nodeadkeys) layout:
         //   LS(N7) (HID 0x24+Shift) → /
-        //   RA(NUBS) (HID 0x32+AltGr) → \ (Linux),  (macOS)
-        // ht_slsh: tap=/ (LS(N7)), hold=\ (RA(NUBS))
+        //   LS(RA(N7)) (Shift+Option+7) → \ on macOS, ÷ on Linux (remapped via keyd)
+        // ht_slsh: tap=/ (LS(N7)), hold=\ (LS(RA(N7)))
         ht_slsh: hold_tap_slsh {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -263,11 +263,11 @@
             // All character keys use Danish (nodeadkeys) positions.
             // $ same as US (LS(N4)) @=RA(N2) {=RA(N7) }=RA(N0) [=RA(N8) ]=RA(N9)
             // |,~,^,& in different shifted positions from US layout.
-            // \ uses AltGr+NUBS on Linux, produces  on macOS (remap via Karabiner).
+            // \ uses Shift+AltGr+7 (÷ on Linux, remapped via keyd below).
             bindings = <
                 &kp RA(N4)    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5        &kp N6       &kp N7       &kp N8       &kp N9       &kp N0       &kp BSPC
-                &kp LS(MINUS) &ht_slsh RA(NUBS) LS(N7)     &kp PRCNT    &kp RA(N2)   &kp LS(DOT)  &ht_min LS(FSLH) FSLH     &kp MINUS    &kp RA(N7)   &kp LS(N8)   &kp LS(N9)   &kp RA(N0)   &kp LS(N0)
-                &kp RA(EQUAL) &kp EXCL    &kp HASH     &kp LS(N6)   &kp LS(RBKT) &kp RA(RBKT)  &ht_quot LS(N2) BSLH     &kp RA(N8)   &kp RA(N9)   &kp LS(EQUAL) &ht_slsh RA(NUBS) LS(N7)     &trans
+                &kp LS(MINUS) &ht_slsh LS(RA(N7)) LS(N7)     &kp PRCNT    &kp RA(N2)   &kp LS(DOT)  &ht_min LS(FSLH) FSLH     &kp MINUS    &kp RA(N7)   &kp LS(N8)   &kp LS(N9)   &kp RA(N0)   &kp LS(N0)
+                &kp RA(EQUAL) &kp EXCL    &kp HASH     &kp LS(N6)   &kp LS(RBKT) &kp RA(RBKT)  &ht_quot LS(N2) BSLH     &kp RA(N8)   &kp RA(N9)   &kp LS(EQUAL) &ht_slsh LS(RA(N7)) LS(N7)     &trans
                                                           &kp LCTRL    &trans       &kp LSHFT     &kp LSHFT    &kp RA(RBKT) &kp LS(EQUAL)
             >;
         };
