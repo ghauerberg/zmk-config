@@ -33,56 +33,86 @@ If you're having pairing issues between the halves or with a host device, flash 
 
 ---
 
+## OS-Mode Switching
+
+This keymap has two complete sets of layers — one for macOS (US layout) and one for Linux (Danish nodeadkeys layout). The OLED shows **`MAC`** or **`LNX`** to indicate the active mode.
+
+**Toggle between modes:**
+1. Press **ESC + G** together → BT layer
+2. Press the **left thumb** (inner) → switch to **MAC** mode
+3. Press the **right thumb** (inner) → switch to **LNX** mode
+
+---
+
 **Legend:**
-- `tap` / `hold` / `2×` = single tap / hold / double tap
+- `tap` / `hold` = single tap / hold
 - `▼` = transparent (passes through to layer below)
 - `·` = no action
 
----
-
-## Layer 0 — QWERTY (Base)
-
-```
-┌─────────┬─────┬─────┬─────────┬─────┬─────┐       ┌─────┬─────┬─────┬─────────┬─────┬──────┐
-│   TAB   │  Q  │  W  │    E    │  R  │  T  │       │  Y  │  U  │  I  │    O    │  P  │ BSPC │
-│         │     │     │ 2×: æ   │     │     │       │     │     │     │  2×: ø  │     │      │
-├─────────┼─────┼─────┼─────────┼─────┼─────┤       ├─────┼─────┼─────┼─────────┼─────┼──────┤
-│   ESC   │  A  │  S  │    D    │  F  │  G  │       │  H  │  J  │  K  │    L    │  ;  │  RET │
-│hld:MOUSE│hld:⌘│hld:⌥│  hld:⌃  │hld:⌘│hld:NAV│     │     │hld:⌘│hld:⌃│  hld:⌥  │     │      │
-│         │2×: å│     │         │     │     │       │     │     │     │         │     │      │
-├─────────┼─────┼─────┼─────────┼─────┼─────┤       ├─────┼─────┼─────┼─────────┼─────┼──────┤
-│   ⌘     │  Z  │  X  │    C    │  V  │  B  │       │  N  │  M  │  ,  │    .    │  /  │ DEL  │
-│         │     │     │ hld:⌘C  │hld:⌘V│    │       │     │     │     │         │     │      │
-└─────────┴─────┴─────┴─────────┴─────┴─────┘       └─────┴─────┴─────┴─────────┴─────┴──────┘
-                             ┌──────┬─────┬───────┐ ┌───────┬─────┬─────┐
-                             │  ⌥   │ NUM │ SHIFT │ │ SPACE │ SYM │ TAB │
-                             └──────┴─────┴───────┘ └───────┴─────┴─────┘
-```
-
-**Home row mods** (hold, 250 ms):
-
-| Key | Tap | Hold | Double tap |
-|-----|-----|------|------------|
-| ESC | Esc | MOUSE layer | — |
-| A | a | ⌘ Cmd | å |
-| S | s | ⌥ Alt | — |
-| D | d | ⌃ Ctrl | — |
-| F | f | ⌘ Cmd | — |
-| G | g | NAV layer | — |
-| J | j | ⌘ Cmd (right) | — |
-| K | k | ⌃ Ctrl (right) | — |
-| L | l | ⌥ Alt (right) | — |
-| E | e | — | æ |
-| O | o | — | ø |
-| C | c | ⌘C (copy) | — |
-| V | v | ⌘V (paste) | — |
-| '/″ *(NUMBER layer)* | ' | — | " |
-| -/_ *(NUMBER layer)* | - | — | _ |
-| /\\ *(NUMBER layer)* | / | — | \ |
+Layout applies to both MAC and LNX modes unless noted with **(MAC)** or **(LNX)**.
 
 ---
 
-## Layer 1 — NUMBER (hold left NUM thumb)
+## Layer 0 — MAC / Layer 1 — LNX (Base)
+
+```
+┌─────────┬─────┬─────┬───────┬─────┬─────┐       ┌─────┬─────┬─────┬───────┬─────┬──────┐
+│   TAB   │  Q  │  W  │   E   │  R  │  T  │       │  Y  │  U  │  I  │   O   │  P  │ BSPC │
+│         │     │     │(MAC)æ │     │     │       │     │     │     │(MAC)ø │     │      │
+│         │     │     │(LNX)æ │     │     │       │     │     │     │(LNX)ø │     │      │
+├─────────┼─────┼─────┼───────┼─────┼─────┤       ├─────┼─────┼─────┼───────┼─────┼──────┤
+│   ESC   │  A  │  S  │   D   │  F  │  G  │       │  H  │  J  │  K  │   L   │  ;  │  RET │
+│hld:MOUSE│(MAC)å│hld:⌥│ hld:⌃ │hld:⌘│hld:NAV│     │     │hld:⌘│hld:⌃│ hld:⌥  │(LNX);│      │
+│         │(LNX)å│     │       │     │       │       │     │     │     │        │(MAC);│      │
+├─────────┼─────┼─────┼───────┼─────┼─────┤       ├─────┼─────┼─────┼────────┼──────┼──────┤
+│   ⌘/⌃   │  Z  │  X  │   C   │  V  │  B  │       │  N  │  M  │  ,  │   .    │  /   │ DEL  │
+│MAC:⌘    │     │     │hld:⌘C  │hld:⌘V│     │       │     │     │     │        │(LNX)?│      │
+│LNX:⌃    │     │     │hld:⌃C  │hld:⌃V│     │       │     │     │     │        │      │      │
+└─────────┴─────┴─────┴───────┴─────┴─────┘       └─────┴─────┴─────┴────────┴──────┴──────┘
+                       ┌──────┬───────┬───────┐ ┌───────┬───────┬─────┐
+                       │ ⌘/⌃  │  NUM  │ SHIFT │ │ SPACE │  SYM  │ TAB │
+                       │MAC:⌘ │       │       │ │       │       │     │
+                       │LNX:⌃ │       │       │ │       │       │     │
+                       └──────┴───────┴───────┘ └───────┴───────┴─────┘
+```
+
+**Danish characters (MAC)** — via Option combos (macOS US layout):
+| Hold | Result |
+|------|--------|
+| A hold | å |
+| E hold | æ |
+| O hold | ø |
+
+**Danish characters (LNX)** — via hold-taps (Danish layout):
+| Key | Tap | Hold |
+|-----|-----|------|
+| E | e | æ |
+| A | a | å |
+| O | o | ø |
+| ; | ; (LS(COMMA)) | : (LS(DOT), shift) |
+| / | / (LS(N7)) | ? (LS(MINUS), shift) |
+
+**Home row mods** (hold, balanced, 280ms, opposite-hand only):
+
+| Key | Tap | Hold |
+|-----|-----|------|
+| ESC | Esc | MOUSE layer |
+| A | a | å (MAC) / å (LNX) |
+| S | s | ⌥ Alt |
+| D | d | ⌃ Ctrl |
+| F | f | ⌘ Cmd |
+| G | g | NAV layer |
+| J | j | ⌘ Cmd (right) |
+| K | k | ⌃ Ctrl (right) |
+| L | l | ⌥ Alt (right) |
+| C | c | ⌘C / ⌃C (copy) |
+| V | v | ⌘V / ⌃V (paste) |
+
+---
+
+## Layer 2 — NUM_MAC / Layer 3 — NUM_LINUX
+
+**MAC** (US layout):
 
 ```
 ┌──────┬─────┬─────┬─────┬─────┬─────┐       ┌─────┬─────┬─────┬─────┬─────┬──────┐
@@ -91,7 +121,7 @@ If you're having pairing issues between the halves or with a host device, flash 
 │  ?   │ /\  │  %  │  @  │  :  │ -/_ │       │  +  │  {  │  (  │  )  │  }  │  =   │
 │      │2×:\ │     │     │     │2×:_ │       │     │     │     │     │     │      │
 ├──────┼─────┼─────┼─────┼─────┼─────┤       ├─────┼─────┼─────┼─────┼─────┼──────┤
-│  |   │  !  │  #  │  &  │  ^  │  ~  │       │ '/″ │  [  │  ]  │  `  │ /\  │      │
+│  |   │  !  │  #  │  &  │  ^  │  ~  │       │ '/" │  [  │  ]  │  `  │ /\  │      │
 │      │     │     │     │     │     │       │2×:" │     │     │     │2×:\ │      │
 └──────┴─────┴─────┴─────┴─────┴─────┘       └─────┴─────┴─────┴─────┴─────┴──────┘
                       ┌──────┬─────┬───────┐ ┌───────┬───────┬───────┐
@@ -99,32 +129,56 @@ If you're having pairing issues between the halves or with a host device, flash 
                       └──────┴─────┴───────┘ └───────┴───────┴───────┘
 ```
 
+**LNX** (Danish layout):
+
+```
+┌──────┬─────┬─────┬─────┬─────┬─────┐       ┌─────┬─────┬─────┬─────┬─────┬──────┐
+│  $   │  1  │  2  │  3  │  4  │  5  │       │  6  │  7  │  8  │  9  │  0  │ BSPC │
+│⌥4    │     │     │     │     │     │       │     │     │     │     │     │      │
+├──────┼─────┼─────┼─────┼─────┼─────┤       ├─────┼─────┼─────┼─────┼─────┼──────┤
+│  ?   │ /\  │  %  │  @  │  ;  │ -/_ │       │  -  │  {  │  (  │  )  │  }  │  =   │
+│⇧-    │hld:\ │     │⌥2   │⇧.   │hld:_│       │     │⌥7   │⇧8   │⇧9   │⌥0   │⇧0    │
+├──────┼─────┼─────┼─────┼─────┼─────┤       ├─────┼─────┼─────┼─────┼─────┼──────┤
+│  |   │  !  │  #  │  &  │  ^  │  ~  │       │ '"/ │  [  │  ]  │  `  │ /\  │      │
+│⌥=    │     │     │⇧6   │⇧]   │⌥]   │       │hld:"│⌥8   │⌥9   │⇧=   │hld:\│      │
+└──────┴─────┴─────┴─────┴─────┴─────┘       └─────┴─────┴─────┴─────┴─────┴──────┘
+                      ┌──────┬─────┬───────┐ ┌───────┬───────┬───────┐
+                      │  ⌃   │  ▼  │ SHIFT │ │ SHIFT │   ~   │   `   │
+                      │      │     │       │ │       │  ⌥]   │  ⇧=   │
+                      └──────┴─────┴───────┘ └───────┴───────┴───────┘
+```
+
+`\` on LNX layer is a placeholder — needs testing on Linux.
+
 ---
 
-## Layer 2 — SYMBOL (hold right SYM thumb)
+## Layer 4 — SYM_MAC / Layer 5 — SYM_LINUX
+
+**MAC** (US layout):
 
 ```
 ┌──────┬──────┬──────┬──────┬──────┬──────┐       ┌───────┬───────┬───────┬───────┬─────┬──────┐
 │ TAB  │  !   │  @   │  #   │  $   │  %   │       │ PG_UP │ PG_DN │ PG_UP │ HOME  │ END │ BSPC │
 ├──────┼──────┼──────┼──────┼──────┼──────┤       ├───────┼───────┼───────┼───────┼─────┼──────┤
-│  ⌃   │⌘⇧4  │ ⌘⇧3  │  ·   │  ⌘   │  ·   │       │   ←   │   ↓   │   ↑   │   →   │ ESC │  `   │
-│      │(scr4)│(scr3)│      │      │      │       │       │       │       │       │     │      │
+│  ⌃   │ ⌘⇧4  │ ⌘⇧3  │  ·   │  ⌘   │  ·   │       │   ←   │   ↓   │   ↑   │   →   │ ESC │  `   │
 ├──────┼──────┼──────┼──────┼──────┼──────┤       ├───────┼───────┼───────┼───────┼─────┼──────┤
 │  ⇧   │  ·   │  ·   │  ·   │  ·   │ ⌃B   │       │  ⌃R   │  ⌃W   │  ⌥H   │  ⌥L   │  |  │  ~   │
 └──────┴──────┴──────┴──────┴──────┴──────┘       └───────┴───────┴───────┴───────┴─────┴──────┘
-                      ┌──────┬───────┬───────┐ ┌───────┬───────┬───────┐
-                      │  ⌥   │   ⌃   │ SHIFT │ │   ▼   │   ·   │   ▼   │
-                      └──────┴───────┴───────┘ └───────┴───────┴───────┘
+                      ┌──────┬──────┬───────┐ ┌───────┬───────┬───────┐
+                      │  ⌥   │  ⌃   │ SHIFT │ │   ▼   │   ·   │   ▼   │
+                      └──────┴──────┴───────┘ └───────┴───────┴───────┘
 ```
+
+**LNX** (Danish layout): same visual layout, different HID codes for `@` (`⌥2`), `$` (`⌥4`), `` ` `` (`⇧=`), `|` (`⌥=`), `~` (`⌥]`).
 
 ---
 
-## Layer 3 — NAV (hold G)
+## Layer 6 — NAV (hold G, shared)
 
 ```
 ┌──────┬──────┬──────┬──────┬────────┬──────┐       ┌─────────┬──────┬──────┬──────┬──────┬──────┐
-│  ·   │  ·   │ ⌘⇧3  │ ⌘⇧4  │ ⌘⌫    │  ·   │       │ tmux [  │  ⌃B  │  ·   │  ·   │  ·   │  ·   │
-│      │      │(scr3)│(scr4)│(delwrd)│      │       │(scrl)   │(pre) │      │      │      │      │
+│  ·   │  ·   │ ⌘⇧3  │ ⌘⇧4  │ ⌘⌫    │ BT   │       │ tmux[   │  ⌃B  │  ·   │  ·   │  ·   │  ·   │
+│      │      │(scr3)│(scr4)│(delwrd)│clear │       │(scroll) │(prev)│      │      │      │      │
 ├──────┼──────┼──────┼──────┼────────┼──────┤       ├─────────┼──────┼──────┼──────┼──────┼──────┤
 │  ·   │ BSPC │ ⇧TAB │ TAB  │  ESC   │  ▼   │       │ tmux P  │tmux N│  ·   │  ·   │  ·   │  ·   │
 │      │      │      │      │        │      │       │(prev pn)│(nxt w│      │      │      │      │
@@ -132,14 +186,16 @@ If you're having pairing issues between the halves or with a host device, flash 
 │  ·   │ ESC  │ VOL- │ VOL+ │   ·    │  ·   │       │ tmux C  │  ·   │  ·   │  ·   │  ·   │  ·   │
 │      │      │      │      │        │      │       │(new win)│      │      │      │      │      │
 └──────┴──────┴──────┴──────┴────────┴──────┘       └─────────┴──────┴──────┴──────┴──────┴──────┘
-                         ┌──────┬───────┬──────┐ ┌──────┬───────┬──────┐
-                         │  ⌥   │ SPACE │  ⌘   │ │  ⌘   │ SPACE │  ⌥   │
-                         └──────┴───────┴──────┘ └──────┴───────┴──────┘
+                        ┌──────┬───────┬──────┐ ┌──────┬───────┬──────┐
+                        │  ⌥   │ SPACE │  ⌘   │ │  ⌘   │ SPACE │  ⌥   │
+                        └──────┴───────┴──────┘ └──────┴───────┴──────┘
 ```
 
 ---
 
-## Layer 4 — MOUSE (hold ESC)
+## Layer 7 — MOUSE_MAC / Layer 8 — MOUSE_LINUX (hold ESC)
+
+**MAC** (Cmd+C/V):
 
 ```
 ┌──────┬──────┬──────┬──────┬──────┬──────┐       ┌──────┬──────┬───────┬────────┬──────┬──────┐
@@ -148,12 +204,23 @@ If you're having pairing issues between the halves or with a host device, flash 
 │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ←   │  ↓   │   ↑   │   →    │  ▼   │  ▼   │
 ├──────┼──────┼──────┼──────┼──────┼──────┤       ├──────┼──────┼───────┼────────┼──────┼──────┤
 │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │  ▼   │       │  ▼   │ SPC← │ SPC→  │   ·    │  ▼   │  ▼   │
-│      │      │      │      │      │      │       │      │(⌘⌥←) │ (⌘⌥→) │        │      │      │
 └──────┴──────┴──────┴──────┴──────┴──────┘       └──────┴──────┴───────┴────────┴──────┴──────┘
-                         ┌──────┬──────┬───────┐ ┌──────┬──────┬────────┐
-                         │ ⌘V   │  ⌘C  │ SHIFT │ │ BTN1 │ BTN2 │  BASE  │
-                         └──────┴──────┴───────┘ └──────┴──────┴────────┘
+                       ┌──────┬──────┬───────┐ ┌──────┬──────┬───────────┐
+                       │ ⌘V   │  ⌘C  │ SHIFT │ │ BTN1 │ BTN2 │ BASE_MAC  │
+                       └──────┴──────┴───────┘ └──────┴──────┴───────────┘
 ```
+
+**LNX** (Ctrl+C/V): same layout, thumbs are `⌃V` / `⌃C` / `BASE_LINUX`.
+
+---
+
+## Layer 9 — BT (ESC+G combo)
+
+| Key | Action |
+|-----|--------|
+| Right home row (J K L ;) | BT profile 0-3 |
+| Left inner thumb | `&to BASE_MAC` |
+| Right inner thumb | `&to BASE_LINUX` |
 
 ---
 
@@ -173,7 +240,8 @@ If you're having pairing issues between the halves or with a host device, flash 
 
 | How | Layer |
 |-----|-------|
-| Hold **G** | NAV (layer 3) |
-| Hold **ESC** | MOUSE (layer 4) |
-| Hold left **NUM** thumb | NUMBER (layer 1) |
-| Hold right **SYM** thumb | SYMBOL (layer 2) |
+| Hold **G** | NAV (layer 6) |
+| Hold **ESC** | MOUSE (layer 7/8) |
+| Hold **NUM** thumb | NUM_MAC / NUM_LINUX (layer 2/3) |
+| Hold **SYM** thumb | SYM_MAC / SYM_LINUX (layer 4/5) |
+| **ESC + G** (combo) | BT (layer 9) |
