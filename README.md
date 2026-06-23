@@ -219,8 +219,8 @@ Layout applies to both MAC and LNX modes unless noted with **(MAC)** or **(LNX)*
 | Key | Action |
 |-----|--------|
 | Right home row (J K L ;) | BT profile 0-3 |
-| Left inner thumb | `&to BASE_MAC` |
-| Right inner thumb | `&to BASE_LINUX` |
+| Left middle thumb | `&to BASE_LINUX` |
+| Left inner thumb (most right of left cluster) | `&to BASE_MAC` |
 
 ---
 
