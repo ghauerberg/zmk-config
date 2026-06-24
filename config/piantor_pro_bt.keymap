@@ -7,7 +7,7 @@
  * Layer 0-1: BASE_MAC / BASE_LINUX (ground layers)
  * Layer 2-3: NUM_MAC / NUM_LINUX
  * Layer 4-5: SYM_MAC / SYM_LINUX
- * Layer 6:   NAV (shared)
+ * Layer 6:   NAV_MAC (macOS) / Layer 10: NAV_LINUX (Linux)
  * Layer 7-8: MOUSE_MAC / MOUSE_LINUX
  * Layer 9:   BT (Bluetooth profiles + OS toggle)
  *
@@ -27,6 +27,7 @@
 #define SYM_MAC     4
 #define SYM_LINUX   5
 #define NAV         6
+#define NAV_LINUX   10
 #define MOUSE_MAC   7
 #define MOUSE_LINUX 8
 #define BT          9
@@ -231,7 +232,7 @@
             display-name = "LNX";
             bindings = <
                 &kp TAB       &kp Q        &kp W        &ht_e SEMI E     &kp R    &kp T         &kp Y        &kp U        &kp I        &ht_o SQT O     &kp P      &kp BSPC
-                &lt MOUSE_LINUX ESC &ht_a LBKT A     &hrm_l LALT S &hrm_l LCTRL D &hrm_l LGUI F &lt NAV G &kp H     &hrm_r RGUI J &hrm_r RCTRL K &hrm_r RALT L &mm_sc &kp RET
+                &lt MOUSE_LINUX ESC &ht_a LBKT A     &hrm_l LALT S &hrm_l LCTRL D &hrm_l LGUI F &lt NAV_LINUX G &kp H     &hrm_r RGUI J &hrm_r RCTRL K &hrm_r RALT L &mm_sc &kp RET
                 &kp LCTRL     &kp Z        &kp X        &hrm_cp LG(C) C &hrm_cp LG(V) V &kp B      &kp N        &kp M        &kp COMMA    &kp DOT      &mm_fq     &kp DEL
                                                           &kp LCTRL    &mo NUM_LINUX &kp LSHFT     &kp SPACE    &mo SYM_LINUX &kp TAB
             >;
@@ -290,12 +291,25 @@
         };
 
         // ╔══════════════════════════════════════════════════════════════════════════════════╗
-        // ║  NAV (layer 6) — shared, momentary via &lt NAV G                               ║
+        // ║  NAV_MAC (layer 6) — macOS shortcuts, momentary via &lt NAV G                  ║
         // ╚══════════════════════════════════════════════════════════════════════════════════╝
-        nav_layer {
+        nav_mac_layer {
             display-name = "NAV";
             bindings = <
                 &none        &none        &kp LG(LS(N3)) &kp LG(LS(N4)) &kp LG(BSPC) &bt BT_CLR    &tmux_wp     &kp LC(B)    &none        &none        &none        &none
+                &none        &kp BSPC     &kp LS(TAB)    &kp TAB        &kp ESC      &trans        &tmux_pp     &tmux_nw     &none        &none        &none        &none
+                &none        &kp ESC      &kp C_VOL_DN   &kp C_VOL_UP   &none        &none         &tmux_cw     &none        &none        &none        &none        &none
+                                                           &kp LALT      &kp SPACE    &kp LGUI      &kp LGUI     &kp SPACE    &kp LALT
+            >;
+        };
+
+        // ╔══════════════════════════════════════════════════════════════════════════════════╗
+        // ║  NAV_LINUX (layer 10) — Linux keycodes, momentary via &lt NAV_LINUX G          ║
+        // ╚══════════════════════════════════════════════════════════════════════════════════╝
+        nav_linux_layer {
+            display-name = "NAV";
+            bindings = <
+                &none        &none        &kp PRINTSCREEN &kp LG(SHIFT(4)) &kp LG(BSPC) &bt BT_CLR    &tmux_wp     &kp LC(B)    &none        &none        &none        &none
                 &none        &kp BSPC     &kp LS(TAB)    &kp TAB        &kp ESC      &trans        &tmux_pp     &tmux_nw     &none        &none        &none        &none
                 &none        &kp ESC      &kp C_VOL_DN   &kp C_VOL_UP   &none        &none         &tmux_cw     &none        &none        &none        &none        &none
                                                            &kp LALT      &kp SPACE    &kp LGUI      &kp LGUI     &kp SPACE    &kp LALT
