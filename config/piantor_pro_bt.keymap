@@ -297,7 +297,7 @@
             display-name = "NAV";
             bindings = <
                 &none        &none        &kp LG(LS(N3)) &kp LG(LS(N4)) &kp LG(BSPC) &bt BT_CLR    &tmux_wp     &kp LC(B)    &none        &none        &none        &none
-                &none        &kp BSPC     &kp LS(TAB)    &kp TAB        &kp ESC      &trans        &tmux_pp     &tmux_nw     &none        &none        &none        &none
+                &none        &kp BSPC     &kp LG(LS(TAB))    &kp LG(TAB)        &kp ESC      &trans        &tmux_pp     &tmux_nw     &none        &none        &none        &none
                 &none        &kp ESC      &kp C_VOL_DN   &kp C_VOL_UP   &none        &none         &tmux_cw     &none        &none        &none        &none        &none
                                                            &kp LALT      &kp SPACE    &kp LGUI      &kp LGUI     &kp SPACE    &kp LALT
             >;
@@ -310,7 +310,7 @@
             display-name = "NAV";
             bindings = <
                 &none        &none        &kp PRINTSCREEN &kp LG(LS(N4)) &kp LG(BSPC) &bt BT_CLR    &tmux_wp     &kp LC(B)    &none        &none        &none        &none
-                &none        &kp BSPC     &kp LS(TAB)    &kp TAB        &kp ESC      &trans        &tmux_pp     &tmux_nw     &none        &none        &none        &none
+                &none        &kp BSPC     &kp LA(LS(TAB))    &kp LA(TAB)        &kp ESC      &trans        &tmux_pp     &tmux_nw     &none        &none        &none        &none
                 &none        &kp ESC      &kp C_VOL_DN   &kp C_VOL_UP   &none        &none         &tmux_cw     &none        &none        &none        &none        &none
                                                            &kp LALT      &kp SPACE    &kp LGUI      &kp LGUI     &kp SPACE    &kp LALT
             >;
