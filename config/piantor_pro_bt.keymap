@@ -7,9 +7,9 @@
  * Layer 0-1: BASE_MAC / BASE_LINUX (ground layers)
  * Layer 2-3: NUM_MAC / NUM_LINUX
  * Layer 4-5: SYM_MAC / SYM_LINUX
- * Layer 6:   NAV_MAC (macOS) / Layer 10: NAV_LINUX (Linux)
- * Layer 7-8: MOUSE_MAC / MOUSE_LINUX
- * Layer 9:   BT (Bluetooth profiles + OS toggle)
+ * Layer 6-7: NAV_MAC / NAV_LINUX
+ * Layer 8-9: MOUSE_MAC / MOUSE_LINUX
+ * Layer 10:  BT (Bluetooth profiles + OS toggle)
  *
  * MAC layers assume US layout on macOS.
  * LINUX layers assume Danish (nodeadkeys) layout on Fedora.
@@ -27,10 +27,10 @@
 #define SYM_MAC     4
 #define SYM_LINUX   5
 #define NAV         6
-#define NAV_LINUX   10
-#define MOUSE_MAC   7
-#define MOUSE_LINUX 8
-#define BT          9
+#define NAV_LINUX   7
+#define MOUSE_MAC   8
+#define MOUSE_LINUX 9
+#define BT          10
 
 / {
     chosen {
@@ -309,7 +309,7 @@
         nav_linux_layer {
             display-name = "NAV";
             bindings = <
-                &none        &none        &kp PRINTSCREEN &kp LG(SHIFT(4)) &kp LG(BSPC) &bt BT_CLR    &tmux_wp     &kp LC(B)    &none        &none        &none        &none
+                &none        &none        &kp PRINTSCREEN &kp LG(LS(N4)) &kp LG(BSPC) &bt BT_CLR    &tmux_wp     &kp LC(B)    &none        &none        &none        &none
                 &none        &kp BSPC     &kp LS(TAB)    &kp TAB        &kp ESC      &trans        &tmux_pp     &tmux_nw     &none        &none        &none        &none
                 &none        &kp ESC      &kp C_VOL_DN   &kp C_VOL_UP   &none        &none         &tmux_cw     &none        &none        &none        &none        &none
                                                            &kp LALT      &kp SPACE    &kp LGUI      &kp LGUI     &kp SPACE    &kp LALT
