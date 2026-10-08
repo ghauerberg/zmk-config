@@ -1,5 +1,11 @@
 # Piantor Pro BT — Keymap Reference
 
+> **Host layout matters.** The firmware sends HID scancodes; the host OS decides
+> which character each one produces. This keymap's symbol layers use
+> **US-layout positions**, and the Danish letters (å/æ/ø) are produced with
+> **macOS Option combos**. On Linux the same scancodes resolve differently — see
+> [macOS vs Linux differences](#macos-vs-linux-differences).
+
 ## Building & Flashing
 
 ### GitHub Actions (recommended)
@@ -95,9 +101,14 @@ If you're having pairing issues between the halves or with a host device, flash 
 │      │     │     │     │     │     │       │2×:" │     │     │     │2×:\ │      │
 └──────┴─────┴─────┴─────┴─────┴─────┘       └─────┴─────┴─────┴─────┴─────┴──────┘
                       ┌──────┬─────┬───────┐ ┌───────┬───────┬───────┐
-                      │  ⌃   │  ▼  │ SHIFT │ │ SHIFT │   ~   │   `   │
+                      │  ⌃   │  ▼  │ SHIFT │ │ SHIFT │   ~   │   *   │
                       └──────┴─────┴───────┘ └───────┴───────┴───────┘
 ```
+
+The right-most right thumb is `*` via the **keypad asterisk** scancode
+(`&kp KP_ASTERISK`, HID `0x55`). Keypad scancodes are not translated by the host
+layout, so it reliably types `*` on every host — unlike `&kp STAR`, which is
+`Shift+8` (`*` on Linux Danish but `(` on macOS Danish).
 
 ---
 
@@ -177,3 +188,56 @@ If you're having pairing issues between the halves or with a host device, flash 
 | Hold **ESC** | MOUSE (layer 4) |
 | Hold left **NUM** thumb | NUMBER (layer 1) |
 | Hold right **SYM** thumb | SYMBOL (layer 2) |
+
+---
+
+## macOS vs Linux differences
+
+The firmware emits the same HID scancodes on both platforms, so the host layout
+decides the character. This keymap was written against a **US-position host
+layout on macOS**, with Danish letters added as Option combos. The audit below
+was checked against the macOS Danish keylayout and the X11 `dk(nodeadkeys)`
+layout.
+
+### Works the same on both (no change needed)
+
+| Character | Keymap binding | macOS | Linux |
+|-----------|----------------|-------|-------|
+| `*` *(right thumb)* | `&kp KP_ASTERISK` | keypad `*` | keypad `*` |
+| `$` | `&kp DLLR` | Shift+4 | Shift+4 |
+| `%` | `&kp PRCNT` | Shift+5 | Shift+5 |
+| `&` | `&kp AMPS` | Shift+6 | Shift+6 |
+| `/` | `&kp FSLH` | Shift+7 | Shift+7 |
+| `(` `)` | `&kp LPAR` `&kp RPAR` | Shift+8 / Shift+9 | Shift+8 / Shift+9 |
+| `+` | `&kp PLUS` | `+` | `+` |
+
+### Differs — handle per OS
+
+`US` = US-position host layout (what main assumes). `DK` = Danish (no dead keys).
+
+| Character | macOS (US positions) | Linux (Danish) | Recommended fix |
+|-----------|----------------------|----------------|-----------------|
+| `@` | `&kp AT` (Shift+2) | `AltGr+2` = `&kp RA(N2)` | `&kp RA(N2)` |
+| `\` | `&kp BSLH` (the `\` key) | `AltGr+<` = `&kp RA(NUBS)` | `&kp RA(NUBS)` |
+| `\|` | `&kp PIPE` (Shift+`\`) | `AltGr+<` = `&kp RA(NUBS)` | `&kp RA(NUBS)` |
+| `~` | `&kp TILDE` (Shift+`` ` ``) | `AltGr+¨` = `&kp RA(RBKT)` | `&kp RA(RBKT)` |
+| `` ` `` | `&kp GRAVE` | `Shift+¨` = `&kp LS(RBKT)` | `&kp LS(RBKT)` |
+| `:` | `&kp COLON` (Shift+;) | `Shift+.` = `&kp LS(DOT)` | `&kp LS(DOT)` |
+| `?` | `&kp QMARK` (Shift+/) | `Shift+-` = `&kp LS(MINUS)` | `&kp LS(MINUS)` |
+| `å` `æ` `ø` | `&kp LA(A)` `&kp LA(SQT)` `&kp LA(O)` | Option combos (same) | no change |
+| `;` `,` `.` `-` | `&kp SEMI` etc. | same on Danish | no change |
+
+The Danish letters only work if the host is set to Danish (no dead keys) on both
+OSes; on a US host they print `å`/`ø`/`¨`.
+
+The cleanest resolution is a **two-layer OS split** (a BASE/NUMBER/SYMBOL set per
+OS, toggled at runtime like the `feature/os-mode-layers` branch), so each platform
+gets its own exact binding instead of one compromise set.
+
+### `⌘` vs `Ctrl`
+
+The base-layer `⌘` (Z position) is `LGUI`. macOS shortcuts (⌘C/⌘V, ⌘⇧3/4) use it
+directly. On Linux, either send `LC(...)`/`LCTRL` in a Linux layer, or remap the
+keyboard's `leftmeta` → `leftcontrol` with
+[keyd](https://github.com/rvaiya/keyd) (see the `feature/linux-mac` branch's
+`keyd-piantor.conf`).
